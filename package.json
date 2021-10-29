@@ -9,21 +9,35 @@
   "workspaces": [
     "packages/*"
   ],
-  "packageManager": "yarn@2.4.3",
+  "scripts": {
+    "build": "yarn generate:defs && yarn generate:meta && yarn build:ts",
+    "build:ts": "polkadot-dev-build-ts",
+    "build:interfaces": "polkadot-types-internal-interfaces",
+    "build:release": "polkadot-ci-ghact-build",
+    "generate:defs": "ts-node --skip-project node_modules/@polkadot/typegen/scripts/polkadot-types-from-defs.cjs --package @bholdus/types/interfaces --input ./packages/types/src/interfaces",
+    "generate:meta": "ts-node --skip-project node_modules/@polkadot/typegen/scripts/polkadot-types-from-chain.cjs --package @bholdus/types/interfaces --endpoint ./packages/types/src/metadata/bholdus.json --output ./packages/types/src/interfaces",
+    "lint": "polkadot-dev-run-lint",
+    "clean": "polkadot-dev-clean-build",
+    "postinstall": "polkadot-dev-yarn-only",
+    "test": "polkadot-dev-run-test --coverage"
+  },
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/node": "^7.15.8",
     "@babel/register": "^7.15.3",
     "@babel/runtime": "^7.15.4",
+    "@changesets/cli": "^2.17.0",
     "@polkadot/dev": "^0.63.10",
     "@polkadot/ts": "^0.4.12",
     "@polkadot/typegen": "^6.5.2",
+    "@polkadot/types": "^6.5.2",
     "@types/jest": "^27.0.2",
+    "prettier": "^2.4.1",
     "ts-node": "^10.4.0",
     "tsconfig-paths": "^3.11.0"
   },
   "volta": {
-    "node": "16.13.0",
+    "node": "14.18.1",
     "yarn": "1.22.17"
   }
 }

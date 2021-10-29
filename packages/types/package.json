@@ -1,0 +1,25 @@
+{
+  "name": "@bholdus/types",
+  "version": "0.0.1",
+  "description": "Implementation of the Parity codec",
+  "main": "index.js",
+  "keywords": [
+    "Bholdus",
+    "JsonRPC"
+  ],
+  "contributors": [],
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bholdus/bholdus.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bholdus/bholdus.js/issues"
+  },
+  "homepage": "https://github.com/bholdus/bholdus.js",
+  "dependencies": {}
+}
