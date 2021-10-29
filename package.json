@@ -1,0 +1,29 @@
+{
+  "name": "bholdus.js",
+  "version": "0.0.1",
+  "description": "A collection of bholdus types to work with polkadot-js",
+  "main": "index.js",
+  "author": "Daniel Lam",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "packageManager": "yarn@2.4.3",
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/node": "^7.15.8",
+    "@babel/register": "^7.15.3",
+    "@babel/runtime": "^7.15.4",
+    "@polkadot/dev": "^0.63.10",
+    "@polkadot/ts": "^0.4.12",
+    "@polkadot/typegen": "^6.5.2",
+    "@types/jest": "^27.0.2",
+    "ts-node": "^10.4.0",
+    "tsconfig-paths": "^3.11.0"
+  },
+  "volta": {
+    "node": "16.13.0",
+    "yarn": "1.22.17"
+  }
+}
