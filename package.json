@@ -6,6 +6,9 @@
   "author": "Daniel Lam",
   "license": "MIT",
   "private": true,
+  "repository": {
+    "url": "https://github.com/Bholdus/bholdus.js"
+  },
   "workspaces": [
     "packages/*"
   ],
