@@ -11,7 +11,8 @@
   "name": "@bholdus/types",
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org"
+    "registry": "https://registry.npmjs.org",
+    "directory": "build"
   },
   "repository": {
     "directory": "packages/types",
@@ -19,6 +20,6 @@
     "url": "https://github.com/Bholdus/bholdus.js.git"
   },
   "sideEffects": false,
-  "version": "0.0.1-next.0",
+  "version": "0.0.1-next.1",
   "main": "index.js"
 }

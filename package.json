@@ -29,7 +29,7 @@
     "generate:meta": "ts-node --skip-project node_modules/@polkadot/typegen/scripts/polkadot-types-from-chain.cjs --package @bholdus/types/interfaces --endpoint ./packages/types/src/metadata/bholdus.json --output ./packages/types/src/interfaces",
     "lint": "polkadot-dev-run-lint",
     "postinstall": "polkadot-dev-yarn-only",
-    "release": "node polkadot-ci-ghact-build.cjs",
+    "release": "yarn changeset publish",
     "test": "polkadot-dev-run-test --coverage"
   },
   "devDependencies": {
