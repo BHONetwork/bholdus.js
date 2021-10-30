@@ -1,6 +1,8 @@
 // Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable */
 
+import type { BholdusPrimitivesCurrencyCurrencyId, BholdusPrimitivesDexTradingPair } from '@bholdus/types/interfaces/bholdusPrimitives';
+import type { BholdusRuntimeProxyType } from '@bholdus/types/interfaces/bholdusRuntime';
 import type { ApiTypes } from '@polkadot/api/types';
 import type { Bytes, Null, Option, Result, U256, U8aFixed, Vec, bool, i128, u128, u16, u32, u64, u8 } from '@polkadot/types';
 import type { AccountId32, H256 } from '@polkadot/types/interfaces/runtime';

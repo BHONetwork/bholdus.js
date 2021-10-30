@@ -23,6 +23,6 @@ export default {
     TokenId: 'U256',
     Address: 'MultiAddress',
     LookupSource: 'MultiAddress',
+    BholdusChainbridgeProposalVotes: 'ProposalVotes',
   },
 };
-

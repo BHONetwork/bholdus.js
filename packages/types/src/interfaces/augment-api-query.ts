@@ -1,6 +1,11 @@
 // Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable */
 
+import type { BholdusPrimitivesCurrencyCurrencyId, BholdusPrimitivesDexTradingPair } from '@bholdus/types/interfaces/bholdusPrimitives';
+import type { BeefyPrimitivesCryptoPublic, BeefyPrimitivesMmrBeefyNextAuthoritySet, BholdusRuntimeOpaqueSessionKeys } from '@bholdus/types/interfaces/bholdusRuntime';
+import type { BholdusChainbridgeProposalVotes } from '@bholdus/types/interfaces/chainbridge';
+import type { BholdusDexTradingPairStatus } from '@bholdus/types/interfaces/dex';
+import type { BholdusTokensApproval, BholdusTokensAssetBalance, BholdusTokensAssetDetails, BholdusTokensAssetMetadata, BholdusTokensRegistration } from '@bholdus/types/interfaces/tokens';
 import type { ApiTypes } from '@polkadot/api/types';
 import type { BTreeMap, Bytes, Data, Option, U8aFixed, Vec, WrapperOpaque, bool, u128, u32, u64, u8 } from '@polkadot/types';
 import type { AccountId32, Call, H256, Perbill, Percent } from '@polkadot/types/interfaces/runtime';

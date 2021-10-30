@@ -5,6 +5,9 @@ import type { Enum, Struct } from '@polkadot/types';
 import type { Balance } from '@polkadot/types/interfaces/runtime';
 import type { ITuple } from '@polkadot/types/types';
 
+/** @name BholdusDexTradingPairStatus */
+export interface BholdusDexTradingPairStatus extends TradingPairStatus {}
+
 /** @name ProvisioningParameters */
 export interface ProvisioningParameters extends Struct {
   readonly minimum_contribution: ITuple<[Balance, Balance]>;

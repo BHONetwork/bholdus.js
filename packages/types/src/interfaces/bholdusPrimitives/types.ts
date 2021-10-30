@@ -5,6 +5,12 @@ import type { Enum, Struct, u32 } from '@polkadot/types';
 import type { FixedU128 } from '@polkadot/types/interfaces/runtime';
 import type { ITuple } from '@polkadot/types/types';
 
+/** @name BholdusPrimitivesCurrencyCurrencyId */
+export interface BholdusPrimitivesCurrencyCurrencyId extends CurrencyId {}
+
+/** @name BholdusPrimitivesDexTradingPair */
+export interface BholdusPrimitivesDexTradingPair extends TradingPair {}
+
 /** @name CurrencyId */
 export interface CurrencyId extends Enum {
   readonly isToken: boolean;
@@ -40,4 +46,4 @@ export interface TokenSymbol extends Enum {
 /** @name TradingPair */
 export interface TradingPair extends ITuple<[CurrencyId, CurrencyId]> {}
 
-export type PHANTOM_PRIMITIVES = 'primitives';
+export type PHANTOM_BHOLDUSPRIMITIVES = 'bholdusPrimitives';

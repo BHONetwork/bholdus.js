@@ -13,5 +13,6 @@ export default {
       target_contribution: '(Balance,Balance)',
       accumulated_contribution: '(Balance, Balance)',
     },
+    BholdusDexTradingPairStatus: 'TradingPairStatus',
   },
 };

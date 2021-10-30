@@ -1,6 +1,9 @@
 // Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable */
 
+import type { BholdusPrimitivesCurrencyCurrencyId } from '@bholdus/types/interfaces/bholdusPrimitives';
+import type { BholdusRuntimeOpaqueSessionKeys, BholdusRuntimeProxyType } from '@bholdus/types/interfaces/bholdusRuntime';
+import type { BholdusTokensAssetIdentity, BholdusTokensDestroyWitness } from '@bholdus/types/interfaces/tokens';
 import type { ApiTypes, SubmittableExtrinsic } from '@polkadot/api/types';
 import type { Bytes, Compact, Data, Option, U8aFixed, Vec, bool, u128, u16, u32, u64, u8 } from '@polkadot/types';
 import type { Extrinsic } from '@polkadot/types/interfaces/extrinsics';

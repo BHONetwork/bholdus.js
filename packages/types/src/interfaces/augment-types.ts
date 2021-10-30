@@ -1,11 +1,12 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import type { DepositNonce, Erc721Token, ProposalStatus, ProposalVotes, ResourceId, TokenId } from '@bholdus/types/interfaces/chainbridge';
+import type { BholdusPrimitivesCurrencyCurrencyId, BholdusPrimitivesDexTradingPair, CurrencyId, CurrencyIdOf, DexShare, ExchangeRate, TokenInfo, TokenSymbol, TradingPair } from '@bholdus/types/interfaces/bholdusPrimitives';
+import type { BeefyPrimitivesCryptoPublic, BeefyPrimitivesMmrBeefyNextAuthoritySet, BholdusRuntimeOpaqueSessionKeys, BholdusRuntimeProxyType } from '@bholdus/types/interfaces/bholdusRuntime';
+import type { BholdusChainbridgeProposalVotes, DepositNonce, Erc721Token, ProposalStatus, ProposalVotes, ResourceId, TokenId } from '@bholdus/types/interfaces/chainbridge';
 import type { Amount } from '@bholdus/types/interfaces/currencies';
-import type { ProvisioningParameters, TradingPairStatus } from '@bholdus/types/interfaces/dex';
-import type { CurrencyId, CurrencyIdOf, DexShare, ExchangeRate, TokenInfo, TokenSymbol, TradingPair } from '@bholdus/types/interfaces/primitives';
-import type { Approval, AssetIdentity, BasicInformation, SocialProfile } from '@bholdus/types/interfaces/tokens';
+import type { BholdusDexTradingPairStatus, ProvisioningParameters, TradingPairStatus } from '@bholdus/types/interfaces/dex';
+import type { BasicInformation, BholdusTokensApproval, BholdusTokensAssetBalance, BholdusTokensAssetDetails, BholdusTokensAssetIdentity, BholdusTokensAssetMetadata, BholdusTokensDestroyWitness, BholdusTokensRegistration, SocialProfile } from '@bholdus/types/interfaces/tokens';
 import type { BitVec, Bool, Bytes, Data, I128, I16, I256, I32, I64, I8, Json, Null, Raw, StorageKey, Text, Type, U128, U16, U256, U32, U64, U8, USize, bool, i128, i16, i256, i32, i64, i8, u128, u16, u256, u32, u64, u8, usize } from '@polkadot/types';
 import type { AssetApproval, AssetApprovalKey, AssetBalance, AssetDestroyWitness, AssetDetails, AssetMetadata, TAssetBalance, TAssetDepositBalance } from '@polkadot/types/interfaces/assets';
 import type { BlockAttestations, IncludedBlocks, MoreAttestations } from '@polkadot/types/interfaces/attestations';
@@ -98,7 +99,6 @@ declare module '@polkadot/types/types/registry' {
     AnySignature: AnySignature;
     ApiId: ApiId;
     ApplyExtrinsicResult: ApplyExtrinsicResult;
-    Approval: Approval;
     ApprovalFlag: ApprovalFlag;
     Approvals: Approvals;
     ArithmeticError: ArithmeticError;
@@ -108,7 +108,6 @@ declare module '@polkadot/types/types/registry' {
     AssetDestroyWitness: AssetDestroyWitness;
     AssetDetails: AssetDetails;
     AssetId: AssetId;
-    AssetIdentity: AssetIdentity;
     AssetInstance: AssetInstance;
     AssetInstanceV0: AssetInstanceV0;
     AssetInstanceV1: AssetInstanceV1;
@@ -148,7 +147,22 @@ declare module '@polkadot/types/types/registry' {
     BeefyKey: BeefyKey;
     BeefyNextAuthoritySet: BeefyNextAuthoritySet;
     BeefyPayload: BeefyPayload;
+    BeefyPrimitivesCryptoPublic: BeefyPrimitivesCryptoPublic;
+    BeefyPrimitivesMmrBeefyNextAuthoritySet: BeefyPrimitivesMmrBeefyNextAuthoritySet;
     BeefySignedCommitment: BeefySignedCommitment;
+    BholdusChainbridgeProposalVotes: BholdusChainbridgeProposalVotes;
+    BholdusDexTradingPairStatus: BholdusDexTradingPairStatus;
+    BholdusPrimitivesCurrencyCurrencyId: BholdusPrimitivesCurrencyCurrencyId;
+    BholdusPrimitivesDexTradingPair: BholdusPrimitivesDexTradingPair;
+    BholdusRuntimeOpaqueSessionKeys: BholdusRuntimeOpaqueSessionKeys;
+    BholdusRuntimeProxyType: BholdusRuntimeProxyType;
+    BholdusTokensApproval: BholdusTokensApproval;
+    BholdusTokensAssetBalance: BholdusTokensAssetBalance;
+    BholdusTokensAssetDetails: BholdusTokensAssetDetails;
+    BholdusTokensAssetIdentity: BholdusTokensAssetIdentity;
+    BholdusTokensAssetMetadata: BholdusTokensAssetMetadata;
+    BholdusTokensDestroyWitness: BholdusTokensDestroyWitness;
+    BholdusTokensRegistration: BholdusTokensRegistration;
     Bid: Bid;
     Bidder: Bidder;
     BidKind: BidKind;

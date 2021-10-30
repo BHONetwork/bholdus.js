@@ -13,23 +13,25 @@ import { jsonrpcFromDefinitions, typesFromDefinitions } from './utils';
 import chainbridge from '../interfaces/chainbridge/definitions';
 import currencies from '../interfaces/currencies/definitions';
 import dex from '../interfaces/dex/definitions';
-import primitives from '../interfaces/primitives/definitions';
+import bholdusPrimitives from '../interfaces/bholdusPrimitives/definitions';
 import tokens from '../interfaces/tokens/definitions';
+import bholdusRuntime from '../interfaces/bholdusRuntime/definitions';
 
 type SpecOverrideBundleDefinition = {
-  spec: Record<string, OverrideBundleDefinition>
-}
+  spec: Record<string, OverrideBundleDefinition>;
+};
 
 const definitions = {
   chainbridge,
   currencies,
   dex,
-  primitives,
-  tokens
+  bholdusPrimitives,
+  tokens,
+  bholdusRuntime,
 };
 
 export const types: RegistryTypes = {
-  ...typesFromDefinitions(definitions)
+  ...typesFromDefinitions(definitions),
 };
 
 export const jsonrpc = jsonrpcFromDefinitions(definitions);
@@ -39,25 +41,22 @@ function getBundleFromSpecName(specName: string): OverrideBundleDefinition {
   return {
     alias: {},
     rpc: jsonrpc,
-    types: [...typesSpec[specName]].map(
-      (version): OverrideVersionedType => {
-        return {
-          minmax: version.minmax,
-          // eslint-disable-next-line
-          // @ts-ignore
-          types: {
-            ...types,
-            ...version.types,
-          }
-        };
-      }
-    )
+    types: [...typesSpec[specName]].map((version): OverrideVersionedType => {
+      return {
+        minmax: version.minmax,
+        // eslint-disable-next-line
+        // @ts-ignore
+        types: {
+          ...types,
+          ...version.types,
+        },
+      };
+    }),
   };
 }
-
 
 export const typesBundle: SpecOverrideBundleDefinition = {
   spec: {
     bholdus: getBundleFromSpecName('bholdus'),
-  }
+  },
 };

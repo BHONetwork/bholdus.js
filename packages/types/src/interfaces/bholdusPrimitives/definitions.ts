@@ -24,5 +24,7 @@ export default {
     CurrencyIdOf: 'CurrencyId',
     TradingPair: '(CurrencyId, CurrencyId)',
     ExchangeRate: 'FixedU128',
-  }
+    BholdusPrimitivesCurrencyCurrencyId: 'CurrencyId',
+    BholdusPrimitivesDexTradingPair: 'TradingPair',
+  },
 };

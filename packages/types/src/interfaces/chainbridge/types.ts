@@ -7,6 +7,9 @@ import type { AccountId, MultiAddress } from '@polkadot/types/interfaces/runtime
 /** @name Address */
 export interface Address extends MultiAddress {}
 
+/** @name BholdusChainbridgeProposalVotes */
+export interface BholdusChainbridgeProposalVotes extends ProposalVotes {}
+
 /** @name ChainId */
 export interface ChainId extends u8 {}
 

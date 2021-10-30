@@ -1,27 +1,36 @@
 {
-  "name": "bholdus.js",
-  "version": "0.0.1",
-  "description": "A collection of bholdus types to work with polkadot-js",
-  "main": "index.js",
   "author": "Daniel Lam",
+  "bugs": "https://github.com/Bholdus/bholdus.js/issues",
+  "description": "A collection of bholdus types to work with polkadot-js",
+  "homepage": "https://github.com/Bholdus/bholdus.js#readme",
   "license": "MIT",
+  "name": "bholdus.js",
+  "packageManager": "yarn@2.4.3",
   "private": true,
   "repository": {
-    "url": "https://github.com/Bholdus/bholdus.js"
+    "type": "git",
+    "url": "https://github.com/Bholdus/bholdus.js.git"
+  },
+  "sideEffects": false,
+  "version": "0.0.1",
+  "volta": {
+    "node": "14.18.1",
+    "yarn": "1.22.17"
   },
   "workspaces": [
     "packages/*"
   ],
+  "main": "index.js",
   "scripts": {
     "build": "yarn generate:defs && yarn generate:meta && yarn build:ts",
-    "build:ts": "polkadot-dev-build-ts",
     "build:interfaces": "polkadot-types-internal-interfaces",
-    "build:release": "polkadot-ci-ghact-build",
+    "build:ts": "node polkadot-dev-build-ts.cjs",
+    "clean": "polkadot-dev-clean-build",
     "generate:defs": "ts-node --skip-project node_modules/@polkadot/typegen/scripts/polkadot-types-from-defs.cjs --package @bholdus/types/interfaces --input ./packages/types/src/interfaces",
     "generate:meta": "ts-node --skip-project node_modules/@polkadot/typegen/scripts/polkadot-types-from-chain.cjs --package @bholdus/types/interfaces --endpoint ./packages/types/src/metadata/bholdus.json --output ./packages/types/src/interfaces",
     "lint": "polkadot-dev-run-lint",
-    "clean": "polkadot-dev-clean-build",
     "postinstall": "polkadot-dev-yarn-only",
+    "release": "node polkadot-ci-ghact-build.cjs",
     "test": "polkadot-dev-run-test --coverage"
   },
   "devDependencies": {
@@ -30,17 +39,14 @@
     "@babel/register": "^7.15.3",
     "@babel/runtime": "^7.15.4",
     "@changesets/cli": "^2.17.0",
-    "@polkadot/dev": "^0.63.10",
+    "@polkadot/dev": "^0.63.18",
     "@polkadot/ts": "^0.4.12",
     "@polkadot/typegen": "^6.5.2",
     "@polkadot/types": "^6.5.2",
     "@types/jest": "^27.0.2",
     "prettier": "^2.4.1",
     "ts-node": "^10.4.0",
-    "tsconfig-paths": "^3.11.0"
-  },
-  "volta": {
-    "node": "14.18.1",
-    "yarn": "1.22.17"
+    "tsconfig-paths": "^3.11.0",
+    "typescript": "^4.4.4"
   }
 }

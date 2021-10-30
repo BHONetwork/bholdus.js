@@ -3,8 +3,6 @@
     "exclude": [
       "build/**/*",
       "**/build/**/*",
-      "docs/examples/promise/90_typegen/*",
-      "node_modules/@polkadot/api/types/consts.d.ts"
     ],
     "compilerOptions": {
       "module": "commonjs",
@@ -14,7 +12,7 @@
         "@bholdus/types": ["packages/types/src"],
         "@bholdus/types/*": ["packages/types/src/*"],
         "@polkadot/api/augment": ["packages/types/src/interfaces/augment-api.ts"],
-        "@polkadot/types/augment": ["packages/types/src/interfaces/augment-types.ts"]
+        "@polkadot/types/augment": ["packages/types/src/interfaces/augment-types.ts"],
       },
       "skipLibCheck": true,
       "typeRoots": [

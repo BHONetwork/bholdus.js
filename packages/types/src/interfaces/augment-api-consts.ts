@@ -1,6 +1,7 @@
 // Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable */
 
+import type { BholdusPrimitivesCurrencyCurrencyId } from '@bholdus/types/interfaces/bholdusPrimitives';
 import type { ApiTypes } from '@polkadot/api/types';
 import type { Vec, u128, u16, u32, u64, u8 } from '@polkadot/types';
 import type { AccountId32, Perbill, Permill } from '@polkadot/types/interfaces/runtime';
