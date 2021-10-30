@@ -6,7 +6,6 @@
   "license": "MIT",
   "name": "bholdus.js",
   "packageManager": "yarn@2.4.3",
-  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/Bholdus/bholdus.js.git"
