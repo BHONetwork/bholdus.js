@@ -1,0 +1,12 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@bholdus/api-options": "0.0.0",
+    "@bholdus/types": "0.0.0"
+  },
+  "changesets": [
+    "late-ears-smash",
+    "thin-planes-protect"
+  ]
+}

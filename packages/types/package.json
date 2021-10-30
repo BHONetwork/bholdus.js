@@ -19,6 +19,6 @@
     "url": "https://github.com/Bholdus/bholdus.js.git"
   },
   "sideEffects": false,
-  "version": "0.0.0",
+  "version": "0.0.1-next.0",
   "main": "index.js"
 }
