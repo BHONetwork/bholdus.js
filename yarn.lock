@@ -1447,12 +1447,12 @@ __metadata:
   resolution: "@bholdus/api-options@workspace:packages/api-options"
   dependencies:
     "@babel/runtime": ^7.16.0
-    "@bholdus/types": "workspace:^"
+    "@bholdus/types": "workspace:*"
     "@polkadot/api": ^6.5.2
   languageName: unknown
   linkType: soft
 
-"@bholdus/types@workspace:^, @bholdus/types@workspace:packages/types":
+"@bholdus/types@workspace:*, @bholdus/types@workspace:packages/types":
   version: 0.0.0-use.local
   resolution: "@bholdus/types@workspace:packages/types"
   languageName: unknown

@@ -23,7 +23,7 @@
     "homepage": "https://github.com/darwinia-network/darwinia.js/tree/master/packages/api#readme",
     "dependencies": {
         "@babel/runtime": "^7.16.0",
-        "@bholdus/types": "workspace:^",
+        "@bholdus/types": "workspace:*",
         "@polkadot/api": "^6.5.2"
     }
 }
