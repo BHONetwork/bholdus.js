@@ -45,7 +45,7 @@ async function buildBabel (dir, type) {
       filenames: ['src'],
       ignore: '**/*.d.ts',
       outDir,
-      outFileExtension: type === 'esm' ? '.mjs' : '.js'
+      outFileExtension: type === 'esm' ? EXT_ESM : EXT_CJS
     }
   });
 
@@ -183,7 +183,7 @@ export const packageInfo = { name: '${name}', version: '${version}' };
       buildWebpack();
     } else {
       await buildBabel(dir, 'cjs');
-      await buildBabel(dir, 'esm');
+      // await buildBabel(dir, 'esm');
 
     //   buildExports();
     }
