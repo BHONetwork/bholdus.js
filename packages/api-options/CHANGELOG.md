@@ -1,5 +1,13 @@
 # @bholdus/api-options
 
+## 0.0.1-next.4
+
+### Patch Changes
+
+- 21644ca: add git tags after publish
+- Updated dependencies [21644ca]
+  - @bholdus/types@0.0.1-next.4
+
 ## 0.0.1-next.3
 
 ### Patch Changes
