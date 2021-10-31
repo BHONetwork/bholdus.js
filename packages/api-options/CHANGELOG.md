@@ -1,5 +1,13 @@
 # @bholdus/api-options
 
+## 0.0.1-next.6
+
+### Patch Changes
+
+- esm as .js
+- Updated dependencies [undefined]
+  - @bholdus/types@0.0.1-next.6
+
 ## 0.0.1-next.5
 
 ### Patch Changes
