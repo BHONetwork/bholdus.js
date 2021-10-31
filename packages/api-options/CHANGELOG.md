@@ -1,5 +1,13 @@
 # @bholdus/api-options
 
+## 0.0.1-next.8
+
+### Patch Changes
+
+- 504b618: fix publish-npm script
+- Updated dependencies [504b618]
+  - @bholdus/types@0.0.1-next.8
+
 ## 0.0.1-next.7
 
 ### Patch Changes
