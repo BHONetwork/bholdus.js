@@ -40,7 +40,7 @@ function publishPackages() {
       execSync('tar zxvf ./package.tgz --directory ./_release');
 
       const resolvedPkg = fs.readFileSync('_release/package/package.json');
-      fs.writeFileSync(`${publishConfig.directory}/package.json`, resolvedPkg);
+      fs.writeFileSync(`${publishConfig.directory}/package.json`, { ...buildPkg, ...resolvedPkg });
 
       execSync('rm package.tgz');
       execSync('rm -rf _release');
