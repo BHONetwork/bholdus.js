@@ -40,13 +40,15 @@ function publishPackages() {
       execSync('tar zxvf ./package.tgz --directory ./_release');
 
       const resolvedPkg = fs.readFileSync('_release/package/package.json');
-      fs.writeFileSync(`${publishConfig.directory}/package.json`, { ...buildPkg, ...resolvedPkg });
+      fs.writeFileSync(`${publishConfig.directory}/package.json`, JSON.stringify({ ...buildPkg, ...resolvedPkg }));
 
       execSync('rm package.tgz');
       execSync('rm -rf _release');
 
+      console.log('NPM Publishing');
       execSync(`npm publish ${publishConfig.directory} --access ${publishConfig.access || 'public'}`);
     } catch (error) {
+      console.error(error);
       clean(['_release', 'package.tgz']);
     }
 
