@@ -1,5 +1,11 @@
 # @bholdus/types
 
+## 0.0.1-next.2
+
+### Patch Changes
+
+- 070e2ed: commonjs as default build .js
+
 ## 0.0.1-next.1
 
 ### Patch Changes
