@@ -1,8 +1,6 @@
 const { execSync, exec } = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const simpleGit = require('simple-git');
-const git = simpleGit();
 
 function publishPackages() {
   process.chdir('packages');
@@ -72,7 +70,11 @@ function addGitTags() {
     const tag = `${pkgName}@${pkgVersion}`;
 
     execSync(`git tag -a ${tag} -m "${tag}"`);
+
+    process.chdir('..');
   }
+
+  process.chdir('..');
 }
 
 function clean(dirs) {
