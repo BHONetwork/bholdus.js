@@ -24,6 +24,8 @@
     "build": "yarn generate:defs && yarn generate:meta && yarn build:ts",
     "build:interfaces": "polkadot-types-internal-interfaces",
     "build:ts": "node polkadot-dev-build-ts.cjs",
+    "build:release": "yarn changeset version && yarn build",
+    "publish": "node publish-npm.cjs",
     "clean": "polkadot-dev-clean-build",
     "generate:defs": "ts-node --skip-project node_modules/@polkadot/typegen/scripts/polkadot-types-from-defs.cjs --package @bholdus/types/interfaces --input ./packages/types/src/interfaces",
     "generate:meta": "ts-node --skip-project node_modules/@polkadot/typegen/scripts/polkadot-types-from-chain.cjs --package @bholdus/types/interfaces --endpoint ./packages/types/src/metadata/bholdus.json --output ./packages/types/src/interfaces",

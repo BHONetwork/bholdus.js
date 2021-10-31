@@ -1,5 +1,13 @@
 # @bholdus/api-options
 
+## 0.0.1-next.3
+
+### Patch Changes
+
+- add npm publish script because changeset doesn't work with yarn workspace v2 and above
+- Updated dependencies [undefined]
+  - @bholdus/types@0.0.1-next.3
+
 ## 0.0.1-next.2
 
 ### Patch Changes

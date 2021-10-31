@@ -6,6 +6,7 @@
     "@bholdus/types": "0.0.0"
   },
   "changesets": [
+    "friendly-schools-scream",
     "late-ears-smash",
     "pretty-lemons-flow",
     "tall-papayas-care",
