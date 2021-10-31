@@ -1,5 +1,11 @@
 # @bholdus/types
 
+## 0.0.1-next.10
+
+### Patch Changes
+
+- fix publish npm script
+
 ## 0.0.1-next.9
 
 ### Patch Changes
