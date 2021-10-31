@@ -45,7 +45,7 @@ async function buildBabel (dir, type) {
       filenames: ['src'],
       ignore: '**/*.d.ts',
       outDir,
-      outFileExtension: type === 'esm' ? EXT_ESM : EXT_CJS
+      outFileExtension: type === 'esm' ? '.mjs' : '.js'
     }
   });
 
