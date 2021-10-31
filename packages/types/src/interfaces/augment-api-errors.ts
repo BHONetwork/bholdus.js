@@ -120,6 +120,115 @@ declare module '@polkadot/api/types/errors' {
        **/
       [key: string]: AugmentedError<ApiType>;
     };
+    bsc: {
+      /**
+       * List of signers is invalid
+       **/
+      CheckpointInvalidSigners: AugmentedError<ApiType>;
+      /**
+       * Missing signers
+       **/
+      CheckpointNoSigner: AugmentedError<ApiType>;
+      /**
+       * Non-checkpoint block contains extra validator list
+       * ExtraValidators is returned if non-checkpoint block contain validator data in
+       * their extra-data fields
+       **/
+      ExtraValidators: AugmentedError<ApiType>;
+      /**
+       * Submitted headers not enough
+       **/
+      HeadersNotEnough: AugmentedError<ApiType>;
+      /**
+       * Header timestamp is ahead of on-chain timestamp
+       **/
+      HeaderTimestampIsAhead: AugmentedError<ApiType>;
+      /**
+       * Header timestamp too close while header timestamp is too close with parent's
+       **/
+      HeaderTimestampTooClose: AugmentedError<ApiType>;
+      /**
+       * Invalid validator list on checkpoint block
+       * errInvalidCheckpointValidators is returned if a checkpoint block contains an
+       * invalid list of validators (i.e. non divisible by 20 bytes)
+       **/
+      InvalidCheckpointValidators: AugmentedError<ApiType>;
+      /**
+       * Difficulty header field is invalid.
+       **/
+      InvalidDifficulty: AugmentedError<ApiType>;
+      /**
+       * Gas limit header field is invalid.
+       **/
+      InvalidGasLimit: AugmentedError<ApiType>;
+      /**
+       * The size of submitted headers is not N/2+1
+       **/
+      InvalidHeadersSize: AugmentedError<ApiType>;
+      /**
+       * Non-zero mix digest
+       * InvalidMixDigest is returned if a block's mix digest is non-zero
+       **/
+      InvalidMixDigest: AugmentedError<ApiType>;
+      /**
+       * Non empty nonce
+       * InvalidNonce is returned if a block header nonce is non-empty
+       **/
+      InvalidNonce: AugmentedError<ApiType>;
+      /**
+       * Invalid signer
+       **/
+      InvalidSigner: AugmentedError<ApiType>;
+      /**
+       * Non empty uncle hash
+       * InvalidUncleHash is returned if a block contains an non-empty uncle list
+       **/
+      InvalidUncleHash: AugmentedError<ApiType>;
+      /**
+       * Extra-data 65 byte signature suffix missing
+       * MissingSignature is returned if a block's extra-data section doesn't seem
+       * to contain a 65 byte secp256k1 signature
+       **/
+      MissingSignature: AugmentedError<ApiType>;
+      /**
+       * Extra-data 32 byte vanity prefix missing
+       * MissingVanity is returned if a block's extra-data section is shorter than
+       * 32 bytes, which is required to store the validator(signer) vanity
+       * 
+       * Extra-data 32 byte vanity prefix missing
+       **/
+      MissingVanity: AugmentedError<ApiType>;
+      /**
+       * This header is not checkpoint
+       **/
+      NotCheckpoint: AugmentedError<ApiType>;
+      /**
+       * EC_RECOVER error
+       * 
+       * Recover pubkey from signature error
+       **/
+      RecoverPubkeyFail: AugmentedError<ApiType>;
+      /**
+       * Block number isn't sensible
+       **/
+      RidiculousNumber: AugmentedError<ApiType>;
+      /**
+       * Signed recently
+       **/
+      SignedRecently: AugmentedError<ApiType>;
+      /**
+       * Block has too much gas used.
+       **/
+      TooMuchGasUsed: AugmentedError<ApiType>;
+      /**
+       * UnknownAncestor is returned when validating a block requires an ancestor that is unknown.
+       **/
+      UnknownAncestor: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
     chainBridge: {
       /**
        * Chain has already been enabled

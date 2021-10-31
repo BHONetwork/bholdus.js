@@ -3,12 +3,13 @@
 
 import type { BholdusPrimitivesCurrencyCurrencyId, BholdusPrimitivesDexTradingPair } from '@bholdus/types/interfaces/bholdusPrimitives';
 import type { BeefyPrimitivesCryptoPublic, BeefyPrimitivesMmrBeefyNextAuthoritySet, BholdusRuntimeOpaqueSessionKeys } from '@bholdus/types/interfaces/bholdusRuntime';
+import type { BscPrimitivesBscHeader } from '@bholdus/types/interfaces/bscPrimitives';
 import type { BholdusChainbridgeProposalVotes } from '@bholdus/types/interfaces/chainbridge';
 import type { BholdusDexTradingPairStatus } from '@bholdus/types/interfaces/dex';
 import type { BholdusTokensApproval, BholdusTokensAssetBalance, BholdusTokensAssetDetails, BholdusTokensAssetMetadata, BholdusTokensRegistration } from '@bholdus/types/interfaces/tokens';
 import type { ApiTypes } from '@polkadot/api/types';
 import type { BTreeMap, Bytes, Data, Option, U8aFixed, Vec, WrapperOpaque, bool, u128, u32, u64, u8 } from '@polkadot/types';
-import type { AccountId32, Call, H256, Perbill, Percent } from '@polkadot/types/interfaces/runtime';
+import type { AccountId32, Call, H160, H256, Perbill, Percent } from '@polkadot/types/interfaces/runtime';
 import type { FrameSupportWeightsPerDispatchClassU64, FrameSystemAccountInfo, FrameSystemEventRecord, FrameSystemLastRuntimeUpgradeInfo, FrameSystemPhase, PalletAuthorshipUncleEntryItem, PalletBagsListListBag, PalletBagsListListNode, PalletBalancesAccountData, PalletBalancesBalanceLock, PalletBalancesReleases, PalletBalancesReserveData, PalletBountiesBounty, PalletCollectiveVotes, PalletContractsStorageDeletedContract, PalletContractsStorageRawContractInfo, PalletContractsWasmPrefabWasmModule, PalletElectionProviderMultiPhasePhase, PalletElectionProviderMultiPhaseReadySolution, PalletElectionProviderMultiPhaseRoundSnapshot, PalletElectionProviderMultiPhaseSignedSignedSubmission, PalletElectionProviderMultiPhaseSolutionOrSnapshotSize, PalletGrandpaStoredPendingChange, PalletGrandpaStoredState, PalletIdentityRegistrarInfo, PalletIdentityRegistration, PalletImOnlineBoundedOpaqueNetworkState, PalletImOnlineSr25519AppSr25519Public, PalletMultisigMultisig, PalletProxyAnnouncement, PalletProxyProxyDefinition, PalletRecoveryActiveRecovery, PalletRecoveryRecoveryConfig, PalletSchedulerReleases, PalletSchedulerScheduledV2, PalletStakingActiveEraInfo, PalletStakingEraRewardPoints, PalletStakingExposure, PalletStakingForcing, PalletStakingNominations, PalletStakingReleases, PalletStakingRewardDestination, PalletStakingSlashingSlashingSpans, PalletStakingSlashingSpanRecord, PalletStakingStakingLedger, PalletStakingUnappliedSlash, PalletStakingValidatorPrefs, PalletTransactionPaymentReleases, PalletTreasuryProposal, SpCoreCryptoKeyTypeId, SpRuntimeGenericDigest, SpStakingOffenceOffenceDetails } from '@polkadot/types/lookup';
 import type { AnyNumber, ITuple, Observable } from '@polkadot/types/types';
 
@@ -120,6 +121,26 @@ declare module '@polkadot/api/types/storage' {
        * The description of each bounty.
        **/
       bountyDescriptions: AugmentedQuery<ApiType, (arg: u32 | AnyNumber | Uint8Array) => Observable<Option<Bytes>>, [u32]> & QueryableStorageEntry<ApiType, [u32]>;
+      /**
+       * Generic query
+       **/
+      [key: string]: QueryableStorageEntry<ApiType>;
+    };
+    bsc: {
+      /**
+       * [`Authorities`] is the set of qualified authorities that currently active or activated in previous rounds
+       * this was added to track the older qualified authorities, to make sure we can verify a older header
+       **/
+      authorities: AugmentedQuery<ApiType, () => Observable<Vec<H160>>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * [`AuthoritiesOfRound`] use a `Map<u64, Vec<u32>>` structure to track the active authorities in every epoch
+       * the key is `checkpoint.number / epoch_length`
+       * the value is the index of authorities which extracted from checkpoint block header
+       * So the the order of authorities vector **MUST** be stable.
+       **/
+      authoritiesOfRound: AugmentedQuery<ApiType, (arg: u64 | AnyNumber | Uint8Array) => Observable<Vec<u32>>, [u64]> & QueryableStorageEntry<ApiType, [u64]>;
+      finalizedAuthority: AugmentedQuery<ApiType, () => Observable<Vec<H160>>, []> & QueryableStorageEntry<ApiType, []>;
+      finalizedCheckpoint: AugmentedQuery<ApiType, () => Observable<BscPrimitivesBscHeader>, []> & QueryableStorageEntry<ApiType, []>;
       /**
        * Generic query
        **/

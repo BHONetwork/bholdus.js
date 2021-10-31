@@ -1,3 +1,6 @@
+// [object Object]
+// SPDX-License-Identifier: Apache-2.0
+
 export default {
   rpc: {},
   types: {
@@ -7,22 +10,22 @@ export default {
     ProposalVotes: {
       votes_for: 'Vec<AccountId>',
       votes_against: 'Vec<AccountId>',
-      status: 'ProposalStatus',
+      status: 'ProposalStatus'
     },
     ProposalStatus: {
       _enum: {
         Initiated: null,
         Approved: null,
-        Rejected: null,
-      },
+        Rejected: null
+      }
     },
     Erc721Token: {
       id: 'TokenId',
-      metadata: 'Vec<u8>',
+      metadata: 'Vec<u8>'
     },
     TokenId: 'U256',
     Address: 'MultiAddress',
     LookupSource: 'MultiAddress',
-    BholdusChainbridgeProposalVotes: 'ProposalVotes',
-  },
+    BholdusChainbridgeProposalVotes: 'ProposalVotes'
+  }
 };

@@ -3,9 +3,10 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import jsonrpc from '@bholdus/types/interfaces/jsonrpc';
+import { typesBundle } from '@bholdus/types/mix';
+
 // import { derive as darwiniaDerive } from '@darwinia/api-derive';
 import { ApiOptions } from '@polkadot/api/types';
-import { typesBundle } from '@bholdus/types/mix';
 
 export const ZERO_OPTIONS: ApiOptions = {
   derives: {},

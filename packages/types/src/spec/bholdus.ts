@@ -13,7 +13,7 @@ const versioned: OverrideVersionedType[] = [
     types: {
       ...sharedTypes
     }
-  },
+  }
 ];
 
 export default versioned;

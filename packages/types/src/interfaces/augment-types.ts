@@ -3,6 +3,7 @@
 
 import type { BholdusPrimitivesCurrencyCurrencyId, BholdusPrimitivesDexTradingPair, CurrencyId, CurrencyIdOf, DexShare, ExchangeRate, TokenInfo, TokenSymbol, TradingPair } from '@bholdus/types/interfaces/bholdusPrimitives';
 import type { BeefyPrimitivesCryptoPublic, BeefyPrimitivesMmrBeefyNextAuthoritySet, BholdusRuntimeOpaqueSessionKeys, BholdusRuntimeProxyType } from '@bholdus/types/interfaces/bholdusRuntime';
+import type { BscPrimitivesBscHeader } from '@bholdus/types/interfaces/bscPrimitives';
 import type { BholdusChainbridgeProposalVotes, DepositNonce, Erc721Token, ProposalStatus, ProposalVotes, ResourceId, TokenId } from '@bholdus/types/interfaces/chainbridge';
 import type { Amount } from '@bholdus/types/interfaces/currencies';
 import type { BholdusDexTradingPairStatus, ProvisioningParameters, TradingPairStatus } from '@bholdus/types/interfaces/dex';
@@ -196,6 +197,7 @@ declare module '@polkadot/types/types/registry' {
     BridgedBlockNumber: BridgedBlockNumber;
     BridgedHeader: BridgedHeader;
     BridgeMessageId: BridgeMessageId;
+    BscPrimitivesBscHeader: BscPrimitivesBscHeader;
     BufferedSessionChange: BufferedSessionChange;
     Bytes: Bytes;
     Call: Call;

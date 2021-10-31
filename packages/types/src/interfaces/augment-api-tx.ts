@@ -3,6 +3,7 @@
 
 import type { BholdusPrimitivesCurrencyCurrencyId } from '@bholdus/types/interfaces/bholdusPrimitives';
 import type { BholdusRuntimeOpaqueSessionKeys, BholdusRuntimeProxyType } from '@bholdus/types/interfaces/bholdusRuntime';
+import type { BscPrimitivesBscHeader } from '@bholdus/types/interfaces/bscPrimitives';
 import type { BholdusTokensAssetIdentity, BholdusTokensDestroyWitness } from '@bholdus/types/interfaces/tokens';
 import type { ApiTypes, SubmittableExtrinsic } from '@polkadot/api/types';
 import type { Bytes, Compact, Data, Option, U8aFixed, Vec, bool, u128, u16, u32, u64, u8 } from '@polkadot/types';
@@ -268,6 +269,20 @@ declare module '@polkadot/api/types/submittable' {
        * # </weight>
        **/
       unassignCurator: AugmentedSubmittable<(bountyId: Compact<u32> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [Compact<u32>]>;
+      /**
+       * Generic tx
+       **/
+      [key: string]: SubmittableExtrinsicFunction<ApiType>;
+    };
+    bsc: {
+      /**
+       * Verify signed relayed headers and finalize authority set
+       **/
+      verifyAndUpdateAuthoritySetSigned: AugmentedSubmittable<(headers: Vec<BscPrimitivesBscHeader> | (BscPrimitivesBscHeader | { parentHash?: any; uncleHash?: any; coinbase?: any; stateRoot?: any; transactionsRoot?: any; receiptsRoot?: any; logBloom?: any; difficulty?: any; number?: any; gasLimit?: any; gasUsed?: any; timestamp?: any; extraData?: any; mixDigest?: any; nonce?: any } | string | Uint8Array)[]) => SubmittableExtrinsic<ApiType>, [Vec<BscPrimitivesBscHeader>]>;
+      /**
+       * Verify unsigned relayed headers and finalize authority set
+       **/
+      verifyAndUpdateAuthoritySetUnsigned: AugmentedSubmittable<(headers: Vec<BscPrimitivesBscHeader> | (BscPrimitivesBscHeader | { parentHash?: any; uncleHash?: any; coinbase?: any; stateRoot?: any; transactionsRoot?: any; receiptsRoot?: any; logBloom?: any; difficulty?: any; number?: any; gasLimit?: any; gasUsed?: any; timestamp?: any; extraData?: any; mixDigest?: any; nonce?: any } | string | Uint8Array)[]) => SubmittableExtrinsic<ApiType>, [Vec<BscPrimitivesBscHeader>]>;
       /**
        * Generic tx
        **/

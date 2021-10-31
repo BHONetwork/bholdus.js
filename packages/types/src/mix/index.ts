@@ -7,15 +7,14 @@
 
 import { OverrideBundleDefinition, OverrideVersionedType, RegistryTypes } from '@polkadot/types/types';
 
-import typesSpec from '../spec';
-import { jsonrpcFromDefinitions, typesFromDefinitions } from './utils';
-
+import bholdusPrimitives from '../interfaces/bholdusPrimitives/definitions';
+import bholdusRuntime from '../interfaces/bholdusRuntime/definitions';
 import chainbridge from '../interfaces/chainbridge/definitions';
 import currencies from '../interfaces/currencies/definitions';
 import dex from '../interfaces/dex/definitions';
-import bholdusPrimitives from '../interfaces/bholdusPrimitives/definitions';
 import tokens from '../interfaces/tokens/definitions';
-import bholdusRuntime from '../interfaces/bholdusRuntime/definitions';
+import typesSpec from '../spec';
+import { jsonrpcFromDefinitions, typesFromDefinitions } from './utils';
 
 type SpecOverrideBundleDefinition = {
   spec: Record<string, OverrideBundleDefinition>;
@@ -27,17 +26,17 @@ const definitions = {
   dex,
   bholdusPrimitives,
   tokens,
-  bholdusRuntime,
+  bholdusRuntime
 };
 
 export const types: RegistryTypes = {
-  ...typesFromDefinitions(definitions),
+  ...typesFromDefinitions(definitions)
 };
 
 export const jsonrpc = jsonrpcFromDefinitions(definitions);
 
 // NOTE: The mapping is done from specName in state.getRuntimeVersion
-function getBundleFromSpecName(specName: string): OverrideBundleDefinition {
+function getBundleFromSpecName (specName: string): OverrideBundleDefinition {
   return {
     alias: {},
     rpc: jsonrpc,
@@ -48,15 +47,15 @@ function getBundleFromSpecName(specName: string): OverrideBundleDefinition {
         // @ts-ignore
         types: {
           ...types,
-          ...version.types,
-        },
+          ...version.types
+        }
       };
-    }),
+    })
   };
 }
 
 export const typesBundle: SpecOverrideBundleDefinition = {
   spec: {
-    bholdus: getBundleFromSpecName('bholdus'),
-  },
+    bholdus: getBundleFromSpecName('bholdus')
+  }
 };
