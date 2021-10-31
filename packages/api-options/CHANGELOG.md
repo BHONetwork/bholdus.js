@@ -1,5 +1,13 @@
 # @bholdus/api-options
 
+## 0.0.1-next.11
+
+### Patch Changes
+
+- fix npm script
+- Updated dependencies [undefined]
+  - @bholdus/types@0.0.1-next.11
+
 ## 0.0.1-next.10
 
 ### Patch Changes

@@ -39,8 +39,9 @@ function publishPackages() {
       fs.mkdirSync('_release');
       execSync('tar zxvf ./package.tgz --directory ./_release');
 
-      const resolvedPkg = fs.readFileSync('_release/package/package.json');
-      fs.writeFileSync(`${publishConfig.directory}/package.json`, JSON.stringify({ ...buildPkg, ...resolvedPkg }));
+      const resolvedPkg = JSON.parse(fs.readFileSync('_release/package/package.json'));
+      console.log(resolvedPkg);
+      fs.writeFileSync(`${publishConfig.directory}/package.json`, JSON.stringify({ ...buildPkg, ...resolvedPkg }, null, 2));
 
       execSync('rm package.tgz');
       execSync('rm -rf _release');
