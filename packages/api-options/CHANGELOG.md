@@ -1,5 +1,13 @@
 # @bholdus/api-options
 
+## 0.0.1-next.7
+
+### Patch Changes
+
+- add exports in distribution package.json
+- Updated dependencies [undefined]
+  - @bholdus/types@0.0.1-next.7
+
 ## 0.0.1-next.6
 
 ### Patch Changes
