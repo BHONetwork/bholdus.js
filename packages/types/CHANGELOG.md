@@ -1,5 +1,11 @@
 # @bholdus/types
 
+## 0.0.1-next.5
+
+### Patch Changes
+
+- 6c0200b: fix publish-npm script
+
 ## 0.0.1-next.4
 
 ### Patch Changes
