@@ -1,14 +1,14 @@
 {
-  "bugs": "https://github.com/Bholdus/bholdus.js/issues",
-  "contributors": [],
+  "name": "@bholdus/types",
+  "version": "0.0.1-next.6",
   "description": "Implementation of the Parity codec",
-  "homepage": "https://github.com/Bholdus/bholdus.js/tree/master/packages/types#readme",
+  "main": "index.js",
   "keywords": [
     "Bholdus",
     "JsonRPC"
   ],
+  "contributors": [],
   "license": "Apache-2.0",
-  "name": "@bholdus/types",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org",
@@ -19,7 +19,8 @@
     "type": "git",
     "url": "https://github.com/Bholdus/bholdus.js.git"
   },
-  "sideEffects": false,
-  "version": "0.0.1-next.6",
-  "main": "index.js"
+  "bugs": {
+    "url": "https://github.com/Bholdus/bholdus.js/issues"
+  },
+  "homepage": "https://github.com/Bholdus/bholdus.js/tree/master/packages/types#readme"
 }

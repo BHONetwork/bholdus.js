@@ -123,8 +123,10 @@ function buildExports () {
   const pkgPath = path.join(buildDir, 'package.json');
   const pkg = require(pkgPath);
   const list = findFiles(buildDir);
+  // console.log('list', list);
 
   if (!list.some(([key]) => key === '.')) {
+    console.log('here');
     // for the env-specifics, add a root key (if not available)
     list.push(['.', {
       browser: createMapEntry(buildDir, pkg.browser)[1],
@@ -183,9 +185,9 @@ export const packageInfo = { name: '${name}', version: '${version}' };
       buildWebpack();
     } else {
       await buildBabel(dir, 'cjs');
-      // await buildBabel(dir, 'esm');
+      await buildBabel(dir, 'esm');
 
-    //   buildExports();
+      buildExports();
     }
 
     console.log();
