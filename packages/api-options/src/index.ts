@@ -11,23 +11,23 @@ import { ApiOptions } from '@polkadot/api/types';
 export const ZERO_OPTIONS: ApiOptions = {
   derives: {},
   rpc: {},
-  types: {}
+  types: {},
 };
 
-export default ({ derives, rpc, types, ...customApiOptions }: ApiOptions = ZERO_OPTIONS): ApiOptions => ({
+export const getApiOptions = ({ derives, rpc, types, ...customApiOptions }: ApiOptions = ZERO_OPTIONS): ApiOptions => ({
   derives: {
     // ...darwiniaDerive,
-    ...derives
+    ...derives,
   },
   rpc: {
     ...jsonrpc,
-    ...rpc
+    ...rpc,
   },
   types: {
-    ...types
+    ...types,
   },
   typesBundle: {
-    ...typesBundle
+    ...typesBundle,
   },
-  ...customApiOptions
+  ...customApiOptions,
 });
