@@ -15,6 +15,8 @@ import { BscPrimitivesBscHeader } from '@bholdus/types/interfaces';
 
 async function start(){
    const api = await ApiPromise.create(getApiOptions());
+   
+   const bscHeader: BscPrimitivesBscHeader = api.createType('BscPrimitivesBscHeader',{...});
 }
 
 ```
