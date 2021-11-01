@@ -1,0 +1,141 @@
+{
+    "ChainId": "u8",
+    "ResourceId": "[u8; 32]",
+    "DepositNonce": "u64",
+    "ProposalVotes": {
+        "votes_for": "Vec<AccountId>",
+        "votes_against": "Vec<AccountId>",
+        "status": "ProposalStatus"
+    },
+    "ProposalStatus": {
+        "_enum": {
+            "Initiated": null,
+            "Approved": null,
+            "Rejected": null
+        }
+    },
+    "Erc721Token": {
+        "id": "TokenId",
+        "metadata": "Vec<u8>"
+    },
+    "TokenId": "U256",
+    "Address": "MultiAddress",
+    "LookupSource": "MultiAddress",
+    "BholdusChainbridgeProposalVotes": "ProposalVotes",
+    "Amount": "i128",
+    "TradingPairStatus": {
+        "_enum": {
+            "Disabled": null,
+            "Enabled": null,
+            "Provisioning": "(ProvisioningParameters)"
+        }
+    },
+    "ProvisioningParameters": {
+        "minimum_contribution": "(Balance,Balance)",
+        "target_contribution": "(Balance,Balance)",
+        "accumulated_contribution": "(Balance, Balance)"
+    },
+    "BholdusDexTradingPairStatus": "TradingPairStatus",
+    "CurrencyId": {
+        "_enum": {
+            "Token": "(TokenSymbol)",
+            "DexShare": "(DexShare,DexShare)"
+        }
+    },
+    "TokenSymbol": {
+        "_enum": {
+            "Native": null,
+            "Token": "(TokenInfo)"
+        }
+    },
+    "DexShare": {
+        "_enum": {
+            "Token": "(TokenSymbol)"
+        }
+    },
+    "TokenInfo": {
+        "id": "u32"
+    },
+    "CurrencyIdOf": "CurrencyId",
+    "TradingPair": "(CurrencyId, CurrencyId)",
+    "ExchangeRate": "FixedU128",
+    "BholdusPrimitivesCurrencyCurrencyId": "CurrencyId",
+    "BholdusPrimitivesDexTradingPair": "TradingPair",
+    "AssetId": "CurrencyId",
+    "BholdusTokensAssetIdentity": {
+        "additional": "Vec<(Data, Data)>",
+        "basic_information": "BasicInformation",
+        "social_profiles": "SocialProfile"
+    },
+    "BasicInformation": {
+        "project_name": "Data",
+        "official_project_website": "Data",
+        "official_email_address": "Data",
+        "logo_icon": "Data",
+        "project_sector": "Data",
+        "project_description": "Data"
+    },
+    "SocialProfile": {
+        "whitepaper": "Data",
+        "medium": "Data",
+        "github": "Data",
+        "reddit": "Data",
+        "telegram": "Data",
+        "discord": "Data",
+        "slack": "Data",
+        "facebook": "Data",
+        "linkedin": "Data",
+        "twitter": "Data"
+    },
+    "BholdusTokensAssetBalance": {
+        "free": "Balance",
+        "reserved": "Balance",
+        "is_frozen": "bool",
+        "sufficient": "bool",
+        "extra": "()"
+    },
+    "BholdusTokensApproval": {
+        "amount": "Balance",
+        "deposit": "Balance"
+    },
+    "BholdusTokensAssetDetails": {
+        "owner": "AccountId",
+        "issuer": "AccountId",
+        "admin": "AccountId",
+        "freezer": "AccountId",
+        "supply": "BalanceOf",
+        "deposit": "BalanceOf",
+        "minBalance": "BalanceOf",
+        "isSufficient": "bool",
+        "accounts": "u32",
+        "approvals": "u32",
+        "isFrozen": "bool"
+    },
+    "BholdusTokensRegistration": {
+        "deposit": "BalanceOf",
+        "info": "BholdusTokensAssetIdentity",
+        "isVerifiable": "bool"
+    },
+    "BholdusTokensAssetMetadata": {
+        "deposit": "BalanceOf",
+        "name": "Vec<u8>",
+        "symbol": "Vec<u8>",
+        "decimals": "u8",
+        "isFrozen": "bool"
+    },
+    "BholdusTokensDestroyWitness": {
+        "accounts": "Compact<u32>",
+        "sufficients": "Compact<u32>",
+        "approvals": "Compact<u32>"
+    },
+    "BholdusRuntimeProxyType": "ProxyType",
+    "BeefyPrimitivesCryptoPublic": "BeefyId",
+    "BeefyPrimitivesMmrBeefyNextAuthoritySet": "BeefyNextAuthoritySet",
+    "BholdusRuntimeOpaqueSessionKeys": {
+        "grandpa": "AccountId",
+        "aura": "AccountId",
+        "imOnline": "AccountId",
+        "authorityDiscovery": "AccountId",
+        "beefy": "[u8; 33]"
+    }
+}
