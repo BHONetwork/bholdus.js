@@ -1,5 +1,11 @@
 # @bholdus/types
 
+## 0.1.0
+
+### Minor Changes
+
+- remove default export for api-options since it may break commonjs node module
+
 ## 0.0.1
 
 ### Patch Changes
