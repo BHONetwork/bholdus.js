@@ -23,4 +23,4 @@ export interface TradingPairStatus extends Enum {
   readonly asProvisioning: ProvisioningParameters;
 }
 
-export type PHANTOM_DEX = 'dex';
+export type PHANTOM_BHOLDUSDEX = 'bholdusDex';

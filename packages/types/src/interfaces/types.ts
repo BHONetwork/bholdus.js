@@ -3,8 +3,9 @@
 
 export * from './bholdusPrimitives/types';
 export * from './bscPrimitives/types';
-export * from './tokens/types';
-export * from './dex/types';
-export * from './chainbridge/types';
-export * from './currencies/types';
+export * from './bholdusTokens/types';
+export * from './bholdusDex/types';
+export * from './bholdusChainbridge/types';
+export * from './bholdusCurrencies/types';
 export * from './bholdusRuntime/types';
+export * from './bholdusNft/types';

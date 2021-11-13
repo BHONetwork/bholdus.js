@@ -9,10 +9,11 @@ import { OverrideBundleDefinition, OverrideVersionedType, RegistryTypes } from '
 
 import bholdusPrimitives from '../interfaces/bholdusPrimitives/definitions';
 import bholdusRuntime from '../interfaces/bholdusRuntime/definitions';
-import chainbridge from '../interfaces/chainbridge/definitions';
-import currencies from '../interfaces/currencies/definitions';
-import dex from '../interfaces/dex/definitions';
-import tokens from '../interfaces/tokens/definitions';
+import bholdusChainbridge from '../interfaces/bholdusChainbridge/definitions';
+import bholdusCurrencies from '../interfaces/bholdusCurrencies/definitions';
+import bholdusDex from '../interfaces/bholdusDex/definitions';
+import bholdusTokens from '../interfaces/bholdusTokens/definitions';
+import bholdusNft from '../interfaces/bholdusNft/definitions';
 import typesSpec from '../spec';
 import { jsonrpcFromDefinitions, typesFromDefinitions } from './utils';
 
@@ -21,22 +22,23 @@ type SpecOverrideBundleDefinition = {
 };
 
 const definitions = {
-  chainbridge,
-  currencies,
-  dex,
+  bholdusChainbridge,
+  bholdusCurrencies,
+  bholdusDex,
   bholdusPrimitives,
-  tokens,
-  bholdusRuntime
+  bholdusTokens,
+  bholdusRuntime,
+  bholdusNft,
 };
 
 export const types: RegistryTypes = {
-  ...typesFromDefinitions(definitions)
+  ...typesFromDefinitions(definitions),
 };
 
 export const jsonrpc = jsonrpcFromDefinitions(definitions);
 
 // NOTE: The mapping is done from specName in state.getRuntimeVersion
-function getBundleFromSpecName (specName: string): OverrideBundleDefinition {
+function getBundleFromSpecName(specName: string): OverrideBundleDefinition {
   return {
     alias: {},
     rpc: jsonrpc,
@@ -47,15 +49,15 @@ function getBundleFromSpecName (specName: string): OverrideBundleDefinition {
         // @ts-ignore
         types: {
           ...types,
-          ...version.types
-        }
+          ...version.types,
+        },
       };
-    })
+    }),
   };
 }
 
 export const typesBundle: SpecOverrideBundleDefinition = {
   spec: {
-    bholdus: getBundleFromSpecName('bholdus')
-  }
+    bholdus: getBundleFromSpecName('bholdus'),
+  },
 };

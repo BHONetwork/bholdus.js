@@ -3,13 +3,13 @@
 
 import type { BholdusPrimitivesCurrencyCurrencyId } from '@bholdus/types/interfaces/bholdusPrimitives';
 import type { BholdusRuntimeOpaqueSessionKeys, BholdusRuntimeProxyType } from '@bholdus/types/interfaces/bholdusRuntime';
+import type { BholdusTokensAssetIdentity, BholdusTokensDestroyWitness } from '@bholdus/types/interfaces/bholdusTokens';
 import type { BscPrimitivesBscHeader } from '@bholdus/types/interfaces/bscPrimitives';
-import type { BholdusTokensAssetIdentity, BholdusTokensDestroyWitness } from '@bholdus/types/interfaces/tokens';
 import type { ApiTypes, SubmittableExtrinsic } from '@polkadot/api/types';
-import type { Bytes, Compact, Data, Option, U8aFixed, Vec, bool, u128, u16, u32, u64, u8 } from '@polkadot/types';
+import type { BTreeMap, Bytes, Compact, Data, Option, U8aFixed, Vec, bool, u128, u16, u32, u64, u8 } from '@polkadot/types';
 import type { Extrinsic } from '@polkadot/types/interfaces/extrinsics';
 import type { AccountId32, Call, H256, MultiAddress, Perbill, Percent } from '@polkadot/types/interfaces/runtime';
-import type { PalletElectionProviderMultiPhaseRawSolution, PalletElectionProviderMultiPhaseSolutionOrSnapshotSize, PalletIdentityBitFlags, PalletIdentityIdentityInfo, PalletIdentityJudgement, PalletImOnlineHeartbeat, PalletImOnlineSr25519AppSr25519Signature, PalletMultisigTimepoint, PalletStakingRewardDestination, PalletStakingValidatorPrefs, SpCoreChangesTrieChangesTrieConfiguration, SpFinalityGrandpaEquivocationProof, SpNposElectionsSupport, SpRuntimeGenericHeader, SpSessionMembershipProof } from '@polkadot/types/lookup';
+import type { PalletElectionProviderMultiPhaseRawSolution, PalletElectionProviderMultiPhaseSolutionOrSnapshotSize, PalletIdentityBitFlags, PalletIdentityIdentityInfo, PalletIdentityJudgement, PalletImOnlineHeartbeat, PalletImOnlineSr25519AppSr25519Signature, PalletMultisigTimepoint, PalletStakingRewardDestination, PalletStakingValidatorPrefs, SpCoreChangesTrieChangesTrieConfiguration, SpFinalityGrandpaEquivocationProof, SpNposElectionsSupport, SpRuntimeHeader, SpSessionMembershipProof } from '@polkadot/types/lookup';
 import type { AnyNumber, ITuple } from '@polkadot/types/types';
 
 declare module '@polkadot/api/types/submittable' {
@@ -18,7 +18,7 @@ declare module '@polkadot/api/types/submittable' {
       /**
        * Provide a set of uncles.
        **/
-      setUncles: AugmentedSubmittable<(newUncles: Vec<SpRuntimeGenericHeader> | (SpRuntimeGenericHeader | { parentHash?: any; number?: any; stateRoot?: any; extrinsicsRoot?: any; digest?: any } | string | Uint8Array)[]) => SubmittableExtrinsic<ApiType>, [Vec<SpRuntimeGenericHeader>]>;
+      setUncles: AugmentedSubmittable<(newUncles: Vec<SpRuntimeHeader> | (SpRuntimeHeader | { parentHash?: any; number?: any; stateRoot?: any; extrinsicsRoot?: any; digest?: any } | string | Uint8Array)[]) => SubmittableExtrinsic<ApiType>, [Vec<SpRuntimeHeader>]>;
       /**
        * Generic tx
        **/
@@ -1328,6 +1328,45 @@ declare module '@polkadot/api/types/submittable' {
        * # </weight>
        **/
       cancelAsMulti: AugmentedSubmittable<(threshold: u16 | AnyNumber | Uint8Array, otherSignatories: Vec<AccountId32> | (AccountId32 | string | Uint8Array)[], timepoint: PalletMultisigTimepoint | { height?: any; index?: any } | string | Uint8Array, callHash: U8aFixed | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [u16, Vec<AccountId32>, PalletMultisigTimepoint, U8aFixed]>;
+      /**
+       * Generic tx
+       **/
+      [key: string]: SubmittableExtrinsicFunction<ApiType>;
+    };
+    nft: {
+      /**
+       * Burn NFT
+       * 
+       * - `token`: (class_id, token_id)
+       **/
+      burn: AugmentedSubmittable<(token: ITuple<[u32, u64]> | [u32 | AnyNumber | Uint8Array, u64 | AnyNumber | Uint8Array]) => SubmittableExtrinsic<ApiType>, [ITuple<[u32, u64]>]>;
+      /**
+       * Create NFT class
+       * 
+       * - `metadata`: external metadata
+       **/
+      createClass: AugmentedSubmittable<(attributes: BTreeMap<Bytes, Bytes>) => SubmittableExtrinsic<ApiType>, [BTreeMap<Bytes, Bytes>]>;
+      /**
+       * Destroy NFT class
+       * 
+       * - `class_id`: The class ID to destroy
+       **/
+      destroyClass: AugmentedSubmittable<(classId: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32]>;
+      /**
+       * Mint NFT token
+       * 
+       * - `to`: the token owner's account
+       * - `class_id`: token belong to the class id
+       * - `metadata`: external metadata
+       * - `quantity`: token quantity
+       **/
+      mint: AugmentedSubmittable<(to: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, classId: u32 | AnyNumber | Uint8Array, metadata: Bytes | string | Uint8Array, attributes: BTreeMap<Bytes, Bytes>, quantity: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, u32, Bytes, BTreeMap<Bytes, Bytes>, u32]>;
+      /**
+       * Transfer NFT to another account
+       * - `to` the token owner's account
+       * - `token`: (class_id, token_id)
+       **/
+      transfer: AugmentedSubmittable<(to: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, token: ITuple<[u32, u64]> | [u32 | AnyNumber | Uint8Array, u64 | AnyNumber | Uint8Array]) => SubmittableExtrinsic<ApiType>, [MultiAddress, ITuple<[u32, u64]>]>;
       /**
        * Generic tx
        **/

@@ -370,6 +370,20 @@ declare module '@polkadot/api/types/consts' {
        **/
       [key: string]: Codec;
     };
+    nft: {
+      /**
+       * Maximum number of bytes in attributes
+       **/
+      maxAttributesBytes: u32 & AugmentedConst<ApiType>;
+      /**
+       * The NFT's pallet id
+       **/
+      palletId: FrameSupportPalletId & AugmentedConst<ApiType>;
+      /**
+       * Generic const
+       **/
+      [key: string]: Codec;
+    };
     proxy: {
       /**
        * The base amount of currency needed to reserve for creating an announcement.

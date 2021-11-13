@@ -23,8 +23,6 @@
     },
     "homepage": "https://github.com/Bholdus/bholdus.js.git/tree/master/packages/api#readme",
     "dependencies": {
-        "@babel/runtime": "^7.16.0",
-        "@bholdus/types": "workspace:*",
-        "@polkadot/api": "^6.5.2"
+        "@bholdus/types": "workspace:*"
     }
 }

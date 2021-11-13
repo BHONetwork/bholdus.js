@@ -77,6 +77,41 @@ declare module '@polkadot/api/types/errors' {
        **/
       [key: string]: AugmentedError<ApiType>;
     };
+    bholdusSupportNft: {
+      /**
+       * Can not destroy class
+       * Total issuance is not 0
+       **/
+      CannotDestroyClass: AugmentedError<ApiType>;
+      /**
+       * Class not found
+       **/
+      ClassNotFound: AugmentedError<ApiType>;
+      /**
+       * Failed because the Maximum amount of metadata was exceeded
+       **/
+      MaxMetadataExceeded: AugmentedError<ApiType>;
+      /**
+       * No available class ID
+       **/
+      NoAvailableClassId: AugmentedError<ApiType>;
+      /**
+       * No available token ID
+       **/
+      NoAvailableTokenId: AugmentedError<ApiType>;
+      /**
+       * The operator is not the owner of the token and has no permission
+       **/
+      NoPermission: AugmentedError<ApiType>;
+      /**
+       * Token(ClassId, TokenId) not found
+       **/
+      TokenNotFound: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
     bounties: {
       /**
        * Proposer's balance is too low.
@@ -844,6 +879,36 @@ declare module '@polkadot/api/types/errors' {
        * A different timepoint was given to the multisig operation that is underway.
        **/
       WrongTimepoint: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
+    nft: {
+      /**
+       * Attributes too large
+       **/
+      AttributesTooLarge: AugmentedError<ApiType>;
+      /**
+       * Can not destroy class
+       **/
+      CannotDestroyClass: AugmentedError<ApiType>;
+      /**
+       * ClassId not found
+       **/
+      ClassIdNotFound: AugmentedError<ApiType>;
+      /**
+       * Quantity is invalid. need >= 1
+       **/
+      InvalidQuantity: AugmentedError<ApiType>;
+      /**
+       * The operator is not the owner of the token and has no permission
+       **/
+      NoPermission: AugmentedError<ApiType>;
+      /**
+       * TokenId not found
+       **/
+      TokenIdNotFound: AugmentedError<ApiType>;
       /**
        * Generic error
        **/

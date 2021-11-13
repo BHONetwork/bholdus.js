@@ -45,4 +45,4 @@ export interface ResourceId extends U8aFixed {}
 /** @name TokenId */
 export interface TokenId extends U256 {}
 
-export type PHANTOM_CHAINBRIDGE = 'chainbridge';
+export type PHANTOM_BHOLDUSCHAINBRIDGE = 'bholdusChainbridge';

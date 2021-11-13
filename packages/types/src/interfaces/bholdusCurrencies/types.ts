@@ -6,4 +6,4 @@ import type { i128 } from '@polkadot/types';
 /** @name Amount */
 export interface Amount extends i128 {}
 
-export type PHANTOM_CURRENCIES = 'currencies';
+export type PHANTOM_BHOLDUSCURRENCIES = 'bholdusCurrencies';

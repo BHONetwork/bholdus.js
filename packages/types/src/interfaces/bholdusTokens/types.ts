@@ -93,4 +93,4 @@ export interface SocialProfile extends Struct {
   readonly twitter: Data;
 }
 
-export type PHANTOM_TOKENS = 'tokens';
+export type PHANTOM_BHOLDUSTOKENS = 'bholdusTokens';

@@ -484,6 +484,32 @@ declare module '@polkadot/api/types/events' {
        **/
       [key: string]: AugmentedEvent<ApiType>;
     };
+    nft: {
+      /**
+       * Burned NFT: \[owner, class_id, token_id\]
+       **/
+      BurnedToken: AugmentedEvent<ApiType, [AccountId32, u32, u64]>;
+      /**
+       * Created NFT class: \[owner, class_id\]
+       **/
+      CreatedClass: AugmentedEvent<ApiType, [AccountId32, u32]>;
+      /**
+       * Destroyed NFT: \[owner, class_id\]
+       **/
+      DestroyedClass: AugmentedEvent<ApiType, [AccountId32, u32]>;
+      /**
+       * Minted NFT: \[from, to, class_id, quantity\]
+       **/
+      MintedToken: AugmentedEvent<ApiType, [AccountId32, AccountId32, u32, u32]>;
+      /**
+       * Transferred NFT: \[from, to, class_id, token_id\]
+       **/
+      TransferredToken: AugmentedEvent<ApiType, [AccountId32, AccountId32, u32, u64]>;
+      /**
+       * Generic event
+       **/
+      [key: string]: AugmentedEvent<ApiType>;
+    };
     offences: {
       /**
        * There is an offence reported of the given `kind` happened at the `session_index` and
