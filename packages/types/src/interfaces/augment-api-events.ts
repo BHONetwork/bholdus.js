@@ -1,10 +1,9 @@
 // Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable */
 
-import type { BholdusPrimitivesCurrencyCurrencyId, BholdusPrimitivesDexTradingPair } from '@bholdus/types/interfaces/bholdusPrimitives';
-import type { BholdusRuntimeProxyType } from '@bholdus/types/interfaces/bholdusRuntime';
+import type { PhoenixRuntimeProxyType } from '@bholdus/types/interfaces/phoenixRuntime';
 import type { ApiTypes } from '@polkadot/api/types';
-import type { Bytes, Null, Option, Result, U256, U8aFixed, Vec, bool, i128, u128, u16, u32, u64, u8 } from '@polkadot/types';
+import type { Bytes, Null, Option, Result, U8aFixed, Vec, bool, u128, u16, u32, u64, u8 } from '@polkadot/types';
 import type { AccountId32, H256 } from '@polkadot/types/interfaces/runtime';
 import type { FrameSupportTokensMiscBalanceStatus, FrameSupportWeightsDispatchInfo, PalletElectionProviderMultiPhaseElectionCompute, PalletImOnlineSr25519AppSr25519Public, PalletMultisigTimepoint, PalletStakingExposure, SpFinalityGrandpaAppPublic, SpRuntimeDispatchError } from '@polkadot/types/lookup';
 import type { ITuple } from '@polkadot/types/types';
@@ -106,73 +105,15 @@ declare module '@polkadot/api/types/events' {
        **/
       [key: string]: AugmentedEvent<ApiType>;
     };
-    chainBridge: {
+    bridgeNativeTransfer: {
       /**
-       * Chain now available for transfers (chain_id)
+       * Inbound Token release succeeded. [inbound_transfer_id, from, to, amount]
        **/
-      ChainWhitelisted: AugmentedEvent<ApiType, [u8]>;
+      InboundTokenReleased: AugmentedEvent<ApiType, [u128, Bytes, AccountId32, u128]>;
       /**
-       * FunglibleTransfer is for relaying fungibles (dest_id, nonce, resource_id, amount, recipient, metadata)
+       * User initiated a crosschain transfer successfully. [outbound_transfer_id, from, to, amount]
        **/
-      FungibleTransfer: AugmentedEvent<ApiType, [u8, u64, U8aFixed, U256, Bytes]>;
-      /**
-       * GenericTransfer is for a generic data payload (dest_id, nonce, resource_id, metadata)
-       **/
-      GenericTransfer: AugmentedEvent<ApiType, [u8, u64, U8aFixed, Bytes]>;
-      /**
-       * NonFungibleTransfer is for relaying NFTS (dest_id, nonce, resource_id, token_id, recipient, metadata)
-       **/
-      NonFungibleTransfer: AugmentedEvent<ApiType, [u8, u64, U8aFixed, Bytes, Bytes, Bytes]>;
-      /**
-       * Voting successful for a proposal
-       **/
-      ProposalApproved: AugmentedEvent<ApiType, [u8, u64]>;
-      /**
-       * Execution of call failed
-       **/
-      ProposalFailed: AugmentedEvent<ApiType, [u8, u64]>;
-      /**
-       * Voting rejected a proposal
-       **/
-      ProposalRejected: AugmentedEvent<ApiType, [u8, u64]>;
-      /**
-       * Execution of call succeeded
-       **/
-      ProposalSucceeded: AugmentedEvent<ApiType, [u8, u64]>;
-      /**
-       * Relayer added to set
-       **/
-      RelayerAdded: AugmentedEvent<ApiType, [AccountId32]>;
-      /**
-       * Relayer removed from set
-       **/
-      RelayerRemoved: AugmentedEvent<ApiType, [AccountId32]>;
-      /**
-       * Vote threshold has changed (new_threshold)
-       **/
-      RelayerThresholdChanged: AugmentedEvent<ApiType, [u32]>;
-      /**
-       * Vot submitted against proposal
-       **/
-      VoteAgainst: AugmentedEvent<ApiType, [u8, u64, AccountId32]>;
-      /**
-       * Vote submitted in favour of proposal
-       **/
-      VoteFor: AugmentedEvent<ApiType, [u8, u64, AccountId32]>;
-      /**
-       * Generic event
-       **/
-      [key: string]: AugmentedEvent<ApiType>;
-    };
-    chainBridgeTransfer: {
-      /**
-       * Resource id is registered successfully. [resource_id, currency_id]
-       **/
-      ResourceIdRegistered: AugmentedEvent<ApiType, [U8aFixed, BholdusPrimitivesCurrencyCurrencyId]>;
-      /**
-       * Resource id is unregistered successfully. [resource_id, currency_id]
-       **/
-      ResourceIdUnregistered: AugmentedEvent<ApiType, [U8aFixed, BholdusPrimitivesCurrencyCurrencyId]>;
+      OutboundTransferInitiated: AugmentedEvent<ApiType, [u128, AccountId32, Bytes, u128]>;
       /**
        * Generic event
        **/
@@ -253,71 +194,6 @@ declare module '@polkadot/api/types/events' {
        * \[account, proposal_hash, voted, yes, no\]
        **/
       Voted: AugmentedEvent<ApiType, [AccountId32, H256, bool, u32, u32]>;
-      /**
-       * Generic event
-       **/
-      [key: string]: AugmentedEvent<ApiType>;
-    };
-    currencies: {
-      /**
-       * Update balance success. \[currency_id, who, amount\]
-       **/
-      BalanceUpdated: AugmentedEvent<ApiType, [BholdusPrimitivesCurrencyCurrencyId, AccountId32, i128]>;
-      /**
-       * Deposit success. \[currency_id, who, amount\]
-       **/
-      Deposited: AugmentedEvent<ApiType, [BholdusPrimitivesCurrencyCurrencyId, AccountId32, u128]>;
-      /**
-       * Currency transfer success. \[currency_id, from, to, amount\]
-       **/
-      Transferred: AugmentedEvent<ApiType, [BholdusPrimitivesCurrencyCurrencyId, AccountId32, AccountId32, u128]>;
-      /**
-       * Withdraw success. \[currency_id, who, amount\]
-       **/
-      Withdrawn: AugmentedEvent<ApiType, [BholdusPrimitivesCurrencyCurrencyId, AccountId32, u128]>;
-      /**
-       * Generic event
-       **/
-      [key: string]: AugmentedEvent<ApiType>;
-    };
-    dex: {
-      /**
-       * Add liqudity to a trading pair successfully. \[who, currency_id_0, pool_0_increment, currency_id_1,
-       * pool_1_increment, share_increment\]
-       **/
-      AddLiquidity: AugmentedEvent<ApiType, [AccountId32, BholdusPrimitivesCurrencyCurrencyId, u128, BholdusPrimitivesCurrencyCurrencyId, u128, u128]>;
-      /**
-       * Add provision to a trading pair successfully.
-       * \[who, currency_id_0, contribution_0, currency_id_1, contribution_1\]
-       **/
-      AddProvision: AugmentedEvent<ApiType, [AccountId32, BholdusPrimitivesCurrencyCurrencyId, u128, BholdusPrimitivesCurrencyCurrencyId, u128]>;
-      /**
-       * Remove liquidity to a trading pair successfully. \[who, currency_id_0,
-       * pool_0_decrement, currency_id_1, pool_1_decrement, share_decrement\]
-       **/
-      RemoveLiqudity: AugmentedEvent<ApiType, [AccountId32, BholdusPrimitivesCurrencyCurrencyId, u128, BholdusPrimitivesCurrencyCurrencyId, u128, u128]>;
-      /**
-       * Swap is successful. \[who, trading_path, supply_amount, target_amount\]
-       **/
-      Swap: AugmentedEvent<ApiType, [AccountId32, Vec<BholdusPrimitivesCurrencyCurrencyId>, u128, u128]>;
-      /**
-       * Trading pair is disabled. \[trading_pair\]
-       **/
-      TradingPairDisabled: AugmentedEvent<ApiType, [BholdusPrimitivesDexTradingPair]>;
-      /**
-       * Trading pair is enabled. Either from disabled or zero accumulated provisioning trading
-       * pair. \[trading_pair\]
-       **/
-      TradingPairEnabled: AugmentedEvent<ApiType, [BholdusPrimitivesDexTradingPair]>;
-      /**
-       * Trading pair is enabled from provisioning successfully. \[currency_id_0,
-       * pool_0_amount, currency_id_1, pool_1_amount, total_share_amount\]
-       **/
-      TradingPairEnabledFromProvisioning: AugmentedEvent<ApiType, [BholdusPrimitivesCurrencyCurrencyId, u128, BholdusPrimitivesCurrencyCurrencyId, u128, u128]>;
-      /**
-       * Trading pair is in provisioning stage. \[trading_pair\]
-       **/
-      TradingPairProvisioning: AugmentedEvent<ApiType, [BholdusPrimitivesDexTradingPair]>;
       /**
        * Generic event
        **/
@@ -498,9 +374,9 @@ declare module '@polkadot/api/types/events' {
        **/
       DestroyedClass: AugmentedEvent<ApiType, [AccountId32, u32]>;
       /**
-       * Minted NFT: \[from, to, class_id, quantity\]
+       * Minted NFT: \[from, to, group_id, class_id, token_id,  quantity\]
        **/
-      MintedToken: AugmentedEvent<ApiType, [AccountId32, AccountId32, u32, u32]>;
+      MintedToken: AugmentedEvent<ApiType, [AccountId32, AccountId32, u32, u32, u64, u32]>;
       /**
        * Transferred NFT: \[from, to, class_id, token_id\]
        **/
@@ -532,11 +408,11 @@ declare module '@polkadot/api/types/events' {
        * disambiguation index and proxy type. \[anonymous, who, proxy_type,
        * disambiguation_index\]
        **/
-      AnonymousCreated: AugmentedEvent<ApiType, [AccountId32, AccountId32, BholdusRuntimeProxyType, u16]>;
+      AnonymousCreated: AugmentedEvent<ApiType, [AccountId32, AccountId32, PhoenixRuntimeProxyType, u16]>;
       /**
        * A proxy was added. \[delegator, delegatee, proxy_type, delay\]
        **/
-      ProxyAdded: AugmentedEvent<ApiType, [AccountId32, AccountId32, BholdusRuntimeProxyType, u32]>;
+      ProxyAdded: AugmentedEvent<ApiType, [AccountId32, AccountId32, PhoenixRuntimeProxyType, u32]>;
       /**
        * A proxy was executed correctly, with the given \[result\].
        **/
@@ -735,67 +611,67 @@ declare module '@polkadot/api/types/events' {
       /**
        * Some asset `asset_id` was frozen. \[asset_id]\
        **/
-      AssetFrozen: AugmentedEvent<ApiType, [BholdusPrimitivesCurrencyCurrencyId]>;
+      AssetFrozen: AugmentedEvent<ApiType, [u64]>;
       /**
        * Some asset `asset_id` was thawed. \[asset_id]\
        **/
-      AssetThawed: AugmentedEvent<ApiType, [BholdusPrimitivesCurrencyCurrencyId]>;
+      AssetThawed: AugmentedEvent<ApiType, [u64]>;
       /**
        * Some asset `asset_id` was verified. \[asset_id]\
        **/
-      AssetVerified: AugmentedEvent<ApiType, [BholdusPrimitivesCurrencyCurrencyId]>;
+      AssetVerified: AugmentedEvent<ApiType, [u64]>;
       /**
        * Some assets were destroyed. \[asset_id, owner, balance\]
        **/
-      Burned: AugmentedEvent<ApiType, [BholdusPrimitivesCurrencyCurrencyId, AccountId32, u128]>;
+      Burned: AugmentedEvent<ApiType, [u64, AccountId32, u128]>;
       /**
        * Some asset class was created. \[asset_id, creator, owner\]
        **/
-      Created: AugmentedEvent<ApiType, [BholdusPrimitivesCurrencyCurrencyId, AccountId32, AccountId32]>;
+      Created: AugmentedEvent<ApiType, [u64, AccountId32, AccountId32]>;
       /**
        * An asset class was destroyed.
        **/
-      Destroyed: AugmentedEvent<ApiType, [BholdusPrimitivesCurrencyCurrencyId]>;
+      Destroyed: AugmentedEvent<ApiType, [u64]>;
       /**
        * An account was created with some free balance. \[asset_id, account, free_balance\]
        **/
-      Endowed: AugmentedEvent<ApiType, [BholdusPrimitivesCurrencyCurrencyId, AccountId32, u128]>;
+      Endowed: AugmentedEvent<ApiType, [u64, AccountId32, u128]>;
       /**
        * Some asset class was force-created. \[asset_id, owner\]
        **/
-      ForceCreated: AugmentedEvent<ApiType, [BholdusPrimitivesCurrencyCurrencyId, AccountId32]>;
+      ForceCreated: AugmentedEvent<ApiType, [u64, AccountId32]>;
       /**
        * Some account `who` was frozen. \[asset_id, who\]
        **/
-      Frozen: AugmentedEvent<ApiType, [BholdusPrimitivesCurrencyCurrencyId, AccountId32]>;
+      Frozen: AugmentedEvent<ApiType, [u64, AccountId32]>;
       /**
        * A name was set or reset (which will remove all judgements). \[asset_id]\
        **/
-      IdentitySet: AugmentedEvent<ApiType, [BholdusPrimitivesCurrencyCurrencyId]>;
+      IdentitySet: AugmentedEvent<ApiType, [u64]>;
       /**
        * Some assets were issued. \[asset_id, owner, total_supply\]
        **/
-      Issued: AugmentedEvent<ApiType, [BholdusPrimitivesCurrencyCurrencyId, AccountId32, u128]>;
+      Issued: AugmentedEvent<ApiType, [u64, AccountId32, u128]>;
       /**
        * Metadata has been cleared for an asset. \[asset_id\]
        **/
-      MetadataCleared: AugmentedEvent<ApiType, [BholdusPrimitivesCurrencyCurrencyId]>;
+      MetadataCleared: AugmentedEvent<ApiType, [u64]>;
       /**
        * New metadata has been set for an asset. \[asset_id, name, symbol, decimals, is_frozen\]
        **/
-      MetadataSet: AugmentedEvent<ApiType, [BholdusPrimitivesCurrencyCurrencyId, Bytes, Bytes, u8, bool]>;
+      MetadataSet: AugmentedEvent<ApiType, [u64, Bytes, Bytes, u8, bool]>;
       /**
        * New identity has been set for an asset. \[asset_id, name\]
        **/
-      ProfileSet: AugmentedEvent<ApiType, [BholdusPrimitivesCurrencyCurrencyId, Bytes, bool]>;
+      ProfileSet: AugmentedEvent<ApiType, [u64, Bytes, bool]>;
       /**
        * Some account `who` was frozen. \[asset_id, who]\
        **/
-      Thawed: AugmentedEvent<ApiType, [BholdusPrimitivesCurrencyCurrencyId, AccountId32]>;
+      Thawed: AugmentedEvent<ApiType, [u64, AccountId32]>;
       /**
        * Some assets were transferred. \[asset_id, owner, total_supply\]
        **/
-      Transferred: AugmentedEvent<ApiType, [BholdusPrimitivesCurrencyCurrencyId, AccountId32, AccountId32, u128]>;
+      Transferred: AugmentedEvent<ApiType, [u64, AccountId32, AccountId32, u128]>;
       /**
        * Generic event
        **/

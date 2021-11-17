@@ -8,12 +8,16 @@
 import { OverrideBundleDefinition, OverrideVersionedType, RegistryTypes } from '@polkadot/types/types';
 
 import bholdusPrimitives from '../interfaces/bholdusPrimitives/definitions';
-import bholdusRuntime from '../interfaces/bholdusRuntime/definitions';
-import bholdusChainbridge from '../interfaces/bholdusChainbridge/definitions';
+import bholdusCommon from '../interfaces/bholdusCommon/definitions';
+import phoenixRuntime from '../interfaces/phoenixRuntime/definitions';
+import cygnusRuntime from '../interfaces/cygnusRuntime/definitions';
+import ulasRuntime from '../interfaces/ulasRuntime/definitions';
 import bholdusCurrencies from '../interfaces/bholdusCurrencies/definitions';
-import bholdusDex from '../interfaces/bholdusDex/definitions';
+// import bholdusDex from '../interfaces/bholdusDex/definitions';
 import bholdusTokens from '../interfaces/bholdusTokens/definitions';
 import bholdusNft from '../interfaces/bholdusNft/definitions';
+import bholdusBridgeNativeTransfer from '../interfaces/bholdusBridgeNativeTransfer/definitions';
+
 import typesSpec from '../spec';
 import { jsonrpcFromDefinitions, typesFromDefinitions } from './utils';
 
@@ -22,13 +26,16 @@ type SpecOverrideBundleDefinition = {
 };
 
 const definitions = {
-  bholdusChainbridge,
   bholdusCurrencies,
-  bholdusDex,
+  // bholdusDex,
   bholdusPrimitives,
   bholdusTokens,
-  bholdusRuntime,
   bholdusNft,
+  phoenixRuntime,
+  cygnusRuntime,
+  ulasRuntime,
+  bholdusCommon,
+  bholdusBridgeNativeTransfer,
 };
 
 export const types: RegistryTypes = {
@@ -58,6 +65,8 @@ function getBundleFromSpecName(specName: string): OverrideBundleDefinition {
 
 export const typesBundle: SpecOverrideBundleDefinition = {
   spec: {
-    bholdus: getBundleFromSpecName('bholdus'),
+    phoenix: getBundleFromSpecName('phoenix'),
+    cygnus: getBundleFromSpecName('cygnus'),
+    ulas: getBundleFromSpecName('ulas'),
   },
 };

@@ -96,6 +96,10 @@ declare module '@polkadot/api/types/errors' {
        **/
       NoAvailableClassId: AugmentedError<ApiType>;
       /**
+       * No available group ID
+       **/
+      NoAvailableGroupId: AugmentedError<ApiType>;
+      /**
        * No available token ID
        **/
       NoAvailableTokenId: AugmentedError<ApiType>;
@@ -155,194 +159,35 @@ declare module '@polkadot/api/types/errors' {
        **/
       [key: string]: AugmentedError<ApiType>;
     };
-    bsc: {
+    bridgeNativeTransfer: {
       /**
-       * List of signers is invalid
+       * All outbound transfers are confirmed
        **/
-      CheckpointInvalidSigners: AugmentedError<ApiType>;
+      AllOutboundTransfersConfirmed: AugmentedError<ApiType>;
       /**
-       * Missing signers
+       * Invalid Service Fee Rate
        **/
-      CheckpointNoSigner: AugmentedError<ApiType>;
+      InvalidServiceFeeRate: AugmentedError<ApiType>;
       /**
-       * Non-checkpoint block contains extra validator list
-       * ExtraValidators is returned if non-checkpoint block contain validator data in
-       * their extra-data fields
+       * Only registered chains are supported
        **/
-      ExtraValidators: AugmentedError<ApiType>;
+      MustBeRegisteredChain: AugmentedError<ApiType>;
       /**
-       * Submitted headers not enough
+       * Origin must be registered relayers
        **/
-      HeadersNotEnough: AugmentedError<ApiType>;
+      MustBeRegisteredRelayer: AugmentedError<ApiType>;
       /**
-       * Header timestamp is ahead of on-chain timestamp
+       * Outbound transfer info not found,
        **/
-      HeaderTimestampIsAhead: AugmentedError<ApiType>;
+      OutboundTransferNotFound: AugmentedError<ApiType>;
       /**
-       * Header timestamp too close while header timestamp is too close with parent's
+       * Inbound transfer received is already executed or the transfer doesn't exists
        **/
-      HeaderTimestampTooClose: AugmentedError<ApiType>;
+      UnexpectedInboundTransfer: AugmentedError<ApiType>;
       /**
-       * Invalid validator list on checkpoint block
-       * errInvalidCheckpointValidators is returned if a checkpoint block contains an
-       * invalid list of validators (i.e. non divisible by 20 bytes)
+       * Outbound transfer is already confirmed or the transfer doesn't exists
        **/
-      InvalidCheckpointValidators: AugmentedError<ApiType>;
-      /**
-       * Difficulty header field is invalid.
-       **/
-      InvalidDifficulty: AugmentedError<ApiType>;
-      /**
-       * Gas limit header field is invalid.
-       **/
-      InvalidGasLimit: AugmentedError<ApiType>;
-      /**
-       * The size of submitted headers is not N/2+1
-       **/
-      InvalidHeadersSize: AugmentedError<ApiType>;
-      /**
-       * Non-zero mix digest
-       * InvalidMixDigest is returned if a block's mix digest is non-zero
-       **/
-      InvalidMixDigest: AugmentedError<ApiType>;
-      /**
-       * Non empty nonce
-       * InvalidNonce is returned if a block header nonce is non-empty
-       **/
-      InvalidNonce: AugmentedError<ApiType>;
-      /**
-       * Invalid signer
-       **/
-      InvalidSigner: AugmentedError<ApiType>;
-      /**
-       * Non empty uncle hash
-       * InvalidUncleHash is returned if a block contains an non-empty uncle list
-       **/
-      InvalidUncleHash: AugmentedError<ApiType>;
-      /**
-       * Extra-data 65 byte signature suffix missing
-       * MissingSignature is returned if a block's extra-data section doesn't seem
-       * to contain a 65 byte secp256k1 signature
-       **/
-      MissingSignature: AugmentedError<ApiType>;
-      /**
-       * Extra-data 32 byte vanity prefix missing
-       * MissingVanity is returned if a block's extra-data section is shorter than
-       * 32 bytes, which is required to store the validator(signer) vanity
-       * 
-       * Extra-data 32 byte vanity prefix missing
-       **/
-      MissingVanity: AugmentedError<ApiType>;
-      /**
-       * This header is not checkpoint
-       **/
-      NotCheckpoint: AugmentedError<ApiType>;
-      /**
-       * EC_RECOVER error
-       * 
-       * Recover pubkey from signature error
-       **/
-      RecoverPubkeyFail: AugmentedError<ApiType>;
-      /**
-       * Block number isn't sensible
-       **/
-      RidiculousNumber: AugmentedError<ApiType>;
-      /**
-       * Signed recently
-       **/
-      SignedRecently: AugmentedError<ApiType>;
-      /**
-       * Block has too much gas used.
-       **/
-      TooMuchGasUsed: AugmentedError<ApiType>;
-      /**
-       * UnknownAncestor is returned when validating a block requires an ancestor that is unknown.
-       **/
-      UnknownAncestor: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
-    chainBridge: {
-      /**
-       * Chain has already been enabled
-       **/
-      ChainAlreadyWhitelisted: AugmentedError<ApiType>;
-      /**
-       * Interactions with this chain is not permitted
-       **/
-      ChainNotWhitelisted: AugmentedError<ApiType>;
-      /**
-       * Provided chain Id is not valid
-       **/
-      InvalidChainId: AugmentedError<ApiType>;
-      /**
-       * Relayer threshold cannot be 0
-       **/
-      InvalidThreshold: AugmentedError<ApiType>;
-      /**
-       * Protected operation, must be performed by relayer
-       **/
-      MustBeRelayer: AugmentedError<ApiType>;
-      /**
-       * Proposal has either failed or succeeded
-       **/
-      ProposalAlreadyComplete: AugmentedError<ApiType>;
-      /**
-       * A proposal with these parameters has already been submitted
-       **/
-      ProposalAlreadyExists: AugmentedError<ApiType>;
-      /**
-       * No proposal with the ID was found
-       **/
-      ProposalDoesNotExist: AugmentedError<ApiType>;
-      /**
-       * Lifetime of proposal has been exceeded
-       **/
-      ProposalExpired: AugmentedError<ApiType>;
-      /**
-       * Cannot complete proposal, needs more votes
-       **/
-      ProposalNotComplete: AugmentedError<ApiType>;
-      /**
-       * Relayer already in set
-       **/
-      RelayerAlreadyExists: AugmentedError<ApiType>;
-      /**
-       * Relayer has already submitted some vote for this proposal
-       **/
-      RelayerAlreadyVoted: AugmentedError<ApiType>;
-      /**
-       * Provided accountId is not a relayer
-       **/
-      RelayerInvalid: AugmentedError<ApiType>;
-      /**
-       * Resource ID provided isn't mapped to anything
-       **/
-      ResourceDoesNotExist: AugmentedError<ApiType>;
-      /**
-       * Relayer threshold not set
-       **/
-      ThresholdNotSet: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
-    chainBridgeTransfer: {
-      /**
-       * Invalid Destination Chain Id, maybe whitelisted is needed?
-       **/
-      InvalidDestChainId: AugmentedError<ApiType>;
-      /**
-       * Resource id is already registered
-       **/
-      ResourceIdAlreadyRegistered: AugmentedError<ApiType>;
-      /**
-       * Resource id not registered
-       **/
-      ResourceIdNotRegistered: AugmentedError<ApiType>;
+      UnexpectedOutboundTransferConfirmation: AugmentedError<ApiType>;
       /**
        * Generic error
        **/
@@ -518,109 +363,6 @@ declare module '@polkadot/api/types/errors' {
        * The given weight bound for the proposal was too low.
        **/
       WrongProposalWeight: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
-    currencies: {
-      /**
-       * Unable to convert the Amount type into Balance.
-       **/
-      AmountIntoBalanceFailed: AugmentedError<ApiType>;
-      /**
-       * Balance is too low.
-       **/
-      BalanceTooLow: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
-    dex: {
-      /**
-       * Insufficient liqudity pool for swapping.
-       **/
-      InsufficientLiquidity: AugmentedError<ApiType>;
-      /**
-       * Calculated supply amount returned by a swap greater than supply amount user can pay.
-       **/
-      InsufficientSupplyAmount: AugmentedError<ApiType>;
-      /**
-       * Calculated target amount returned by a swap less than target amount user accepts to.
-       * receive.
-       **/
-      InsufficientTargetAmount: AugmentedError<ApiType>;
-      /**
-       * Provision contribution not sastisfies minimum contribution requirements.
-       **/
-      InvalidContributionIncrement: AugmentedError<ApiType>;
-      /**
-       * Currency provided is not supported for swapping.
-       * Only "Token" currency are supported.
-       **/
-      InvalidCurrencyId: AugmentedError<ApiType>;
-      /**
-       * Invalid liquidity increment.
-       **/
-      InvalidLiquidityIncrement: AugmentedError<ApiType>;
-      /**
-       * Remove share amount is invalid.
-       **/
-      InvalidRemoveShareAmount: AugmentedError<ApiType>;
-      /**
-       * Trading path limit is reached.
-       **/
-      InvalidTradingPathLength: AugmentedError<ApiType>;
-      /**
-       * New invariant after swap is smaller than invariant before swap.
-       * This may happen because of arithmetic error.
-       **/
-      InvariantAfterCheckFailed: AugmentedError<ApiType>;
-      /**
-       * Trading pair is already enabled.
-       **/
-      TradingPairAlreadyEnabled: AugmentedError<ApiType>;
-      /**
-       * Trading pair is already provisioned so it can't be enabled.
-       **/
-      TradingPairAlreadyProvisioned: AugmentedError<ApiType>;
-      /**
-       * Trading pair must be disabled to work.
-       **/
-      TradingPairMustBeDisabled: AugmentedError<ApiType>;
-      /**
-       * Trading pair must be enabled to work.
-       **/
-      TradingPairMustBeEnabled: AugmentedError<ApiType>;
-      /**
-       * Trading pair must be in provisioning.
-       **/
-      TradingPairMustBeProvisioning: AugmentedError<ApiType>;
-      /**
-       * Withdrawn amount is unacceptable by user.
-       **/
-      UnacceptableWithdrawnAmount: AugmentedError<ApiType>;
-      /**
-       * Provisioning trading pair is not qualified to be enabled yet.
-       **/
-      UnqualifiedProvision: AugmentedError<ApiType>;
-      /**
-       * User didn't provide liquidity for this trading pair in provisioning but try to claim dex share.
-       **/
-      UserNotAddProvision: AugmentedError<ApiType>;
-      /**
-       * Supply amount is zero.
-       **/
-      ZeroSupplyAmount: AugmentedError<ApiType>;
-      /**
-       * Target amount is zero.
-       **/
-      ZeroTargetAmount: AugmentedError<ApiType>;
-      /**
-       * Total share amount is zero.
-       **/
-      ZeroTotalShare: AugmentedError<ApiType>;
       /**
        * Generic error
        **/
@@ -1273,6 +1015,10 @@ declare module '@polkadot/api/types/errors' {
        * Minimum balance should be non-zero.
        **/
       MinBalanceZero: AugmentedError<ApiType>;
+      /**
+       * No available token ID
+       **/
+      NoAvailableTokenId: AugmentedError<ApiType>;
       /**
        * The signing account has no permission to do the operation.
        **/

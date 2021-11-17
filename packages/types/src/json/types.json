@@ -1,41 +1,5 @@
 {
-    "ChainId": "u8",
-    "ResourceId": "[u8; 32]",
-    "DepositNonce": "u64",
-    "ProposalVotes": {
-        "votes_for": "Vec<AccountId>",
-        "votes_against": "Vec<AccountId>",
-        "status": "ProposalStatus"
-    },
-    "ProposalStatus": {
-        "_enum": {
-            "Initiated": null,
-            "Approved": null,
-            "Rejected": null
-        }
-    },
-    "Erc721Token": {
-        "id": "TokenId",
-        "metadata": "Vec<u8>"
-    },
-    "TokenId": "U256",
-    "Address": "MultiAddress",
-    "LookupSource": "MultiAddress",
-    "BholdusChainbridgeProposalVotes": "ProposalVotes",
     "Amount": "i128",
-    "TradingPairStatus": {
-        "_enum": {
-            "Disabled": null,
-            "Enabled": null,
-            "Provisioning": "(ProvisioningParameters)"
-        }
-    },
-    "ProvisioningParameters": {
-        "minimum_contribution": "(Balance,Balance)",
-        "target_contribution": "(Balance,Balance)",
-        "accumulated_contribution": "(Balance, Balance)"
-    },
-    "BholdusDexTradingPairStatus": "TradingPairStatus",
     "CurrencyId": {
         "_enum": {
             "Token": "(TokenSymbol)",
@@ -61,7 +25,7 @@
     "ExchangeRate": "FixedU128",
     "BholdusPrimitivesCurrencyCurrencyId": "CurrencyId",
     "BholdusPrimitivesDexTradingPair": "TradingPair",
-    "AssetId": "CurrencyId",
+    "AssetId": "u64",
     "BholdusTokensAssetIdentity": {
         "additional": "Vec<(Data, Data)>",
         "basic_information": "BasicInformation",
@@ -128,16 +92,6 @@
         "sufficients": "Compact<u32>",
         "approvals": "Compact<u32>"
     },
-    "BholdusRuntimeProxyType": "ProxyType",
-    "BeefyPrimitivesCryptoPublic": "BeefyId",
-    "BeefyPrimitivesMmrBeefyNextAuthoritySet": "BeefyNextAuthoritySet",
-    "BholdusRuntimeOpaqueSessionKeys": {
-        "grandpa": "AccountId",
-        "aura": "AccountId",
-        "imOnline": "AccountId",
-        "authorityDiscovery": "AccountId",
-        "beefy": "[u8; 33]"
-    },
     "NftClassData": {
         "attributes": "BTreeMap<Vec<u8>, Vec<u8>>"
     },
@@ -153,5 +107,38 @@
         "metadata": "BoundedVec<u8, 1024>",
         "owner": "AccountId",
         "data": "NftTokenData"
+    },
+    "PhoenixRuntimeProxyType": "ProxyType",
+    "PhoenixRuntimeOpaqueSessionKeys": {
+        "grandpa": "AccountId",
+        "aura": "AccountId",
+        "imOnline": "AccountId",
+        "authorityDiscovery": "AccountId",
+        "beefy": "[u8; 33]"
+    },
+    "CygnusRuntimeProxyType": "ProxyType",
+    "CygnusRuntimeOpaqueSessionKeys": {
+        "grandpa": "AccountId",
+        "aura": "AccountId",
+        "imOnline": "AccountId",
+        "authorityDiscovery": "AccountId",
+        "beefy": "[u8; 33]"
+    },
+    "UlasRuntimeProxyType": "ProxyType",
+    "UlasRuntimeOpaqueSessionKeys": {
+        "grandpa": "AccountId",
+        "aura": "AccountId",
+        "imOnline": "AccountId",
+        "authorityDiscovery": "AccountId",
+        "beefy": "[u8; 33]"
+    },
+    "BeefyPrimitivesCryptoPublic": "BeefyId",
+    "BeefyPrimitivesMmrBeefyNextAuthoritySet": "BeefyNextAuthoritySet",
+    "BholdusBridgeNativeTransferOutboundTransferInfo": {
+        "from": "AccountId",
+        "to": "Vec<u8>",
+        "amount": "Balance",
+        "target_chain": "ChainId",
+        "service_fee": "Balance"
     }
 }

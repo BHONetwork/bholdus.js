@@ -1,14 +1,16 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import type { BholdusChainbridgeProposalVotes, DepositNonce, Erc721Token, ProposalStatus, ProposalVotes, ResourceId, TokenId } from '@bholdus/types/interfaces/bholdusChainbridge';
+import type { BholdusBridgeNativeTransferOutboundTransferInfo } from '@bholdus/types/interfaces/bholdusBridgeNativeTransfer';
+import type { BeefyPrimitivesCryptoPublic, BeefyPrimitivesMmrBeefyNextAuthoritySet } from '@bholdus/types/interfaces/bholdusCommon';
 import type { Amount } from '@bholdus/types/interfaces/bholdusCurrencies';
-import type { BholdusDexTradingPairStatus, ProvisioningParameters, TradingPairStatus } from '@bholdus/types/interfaces/bholdusDex';
 import type { NftClassData, NftTokenData, SupportNftClassInfo, SupportNftTokenInfo } from '@bholdus/types/interfaces/bholdusNft';
 import type { BholdusPrimitivesCurrencyCurrencyId, BholdusPrimitivesDexTradingPair, CurrencyId, CurrencyIdOf, DexShare, ExchangeRate, TokenInfo, TokenSymbol, TradingPair } from '@bholdus/types/interfaces/bholdusPrimitives';
-import type { BeefyPrimitivesCryptoPublic, BeefyPrimitivesMmrBeefyNextAuthoritySet, BholdusRuntimeOpaqueSessionKeys, BholdusRuntimeProxyType } from '@bholdus/types/interfaces/bholdusRuntime';
 import type { BasicInformation, BholdusTokensApproval, BholdusTokensAssetBalance, BholdusTokensAssetDetails, BholdusTokensAssetIdentity, BholdusTokensAssetMetadata, BholdusTokensDestroyWitness, BholdusTokensRegistration, SocialProfile } from '@bholdus/types/interfaces/bholdusTokens';
 import type { BscPrimitivesBscHeader } from '@bholdus/types/interfaces/bscPrimitives';
+import type { CygnusRuntimeOpaqueSessionKeys, CygnusRuntimeProxyType } from '@bholdus/types/interfaces/cygnusRuntime';
+import type { PhoenixRuntimeOpaqueSessionKeys, PhoenixRuntimeProxyType } from '@bholdus/types/interfaces/phoenixRuntime';
+import type { UlasRuntimeOpaqueSessionKeys, UlasRuntimeProxyType } from '@bholdus/types/interfaces/ulasRuntime';
 import type { BitVec, Bool, Bytes, Data, I128, I16, I256, I32, I64, I8, Json, Null, Raw, StorageKey, Text, Type, U128, U16, U256, U32, U64, U8, USize, bool, i128, i16, i256, i32, i64, i8, u128, u16, u256, u32, u64, u8, usize } from '@polkadot/types';
 import type { AssetApproval, AssetApprovalKey, AssetBalance, AssetDestroyWitness, AssetDetails, AssetMetadata, TAssetBalance, TAssetDepositBalance } from '@polkadot/types/interfaces/assets';
 import type { BlockAttestations, IncludedBlocks, MoreAttestations } from '@polkadot/types/interfaces/attestations';
@@ -152,12 +154,9 @@ declare module '@polkadot/types/types/registry' {
     BeefyPrimitivesCryptoPublic: BeefyPrimitivesCryptoPublic;
     BeefyPrimitivesMmrBeefyNextAuthoritySet: BeefyPrimitivesMmrBeefyNextAuthoritySet;
     BeefySignedCommitment: BeefySignedCommitment;
-    BholdusChainbridgeProposalVotes: BholdusChainbridgeProposalVotes;
-    BholdusDexTradingPairStatus: BholdusDexTradingPairStatus;
+    BholdusBridgeNativeTransferOutboundTransferInfo: BholdusBridgeNativeTransferOutboundTransferInfo;
     BholdusPrimitivesCurrencyCurrencyId: BholdusPrimitivesCurrencyCurrencyId;
     BholdusPrimitivesDexTradingPair: BholdusPrimitivesDexTradingPair;
-    BholdusRuntimeOpaqueSessionKeys: BholdusRuntimeOpaqueSessionKeys;
-    BholdusRuntimeProxyType: BholdusRuntimeProxyType;
     BholdusTokensApproval: BholdusTokensApproval;
     BholdusTokensAssetBalance: BholdusTokensAssetBalance;
     BholdusTokensAssetDetails: BholdusTokensAssetDetails;
@@ -289,6 +288,8 @@ declare module '@polkadot/types/types/registry' {
     CreatedBlock: CreatedBlock;
     CurrencyId: CurrencyId;
     CurrencyIdOf: CurrencyIdOf;
+    CygnusRuntimeOpaqueSessionKeys: CygnusRuntimeOpaqueSessionKeys;
+    CygnusRuntimeProxyType: CygnusRuntimeProxyType;
     Data: Data;
     DeferredOffenceOf: DeferredOffenceOf;
     DefunctVoter: DefunctVoter;
@@ -299,7 +300,6 @@ declare module '@polkadot/types/types/registry' {
     DeliveredMessages: DeliveredMessages;
     DepositBalance: DepositBalance;
     DepositBalanceOf: DepositBalanceOf;
-    DepositNonce: DepositNonce;
     DestroyWitness: DestroyWitness;
     DexShare: DexShare;
     Digest: Digest;
@@ -343,7 +343,6 @@ declare module '@polkadot/types/types/registry' {
     EraPoints: EraPoints;
     EraRewardPoints: EraRewardPoints;
     EraRewards: EraRewards;
-    Erc721Token: Erc721Token;
     ErrorMetadataLatest: ErrorMetadataLatest;
     ErrorMetadataV10: ErrorMetadataV10;
     ErrorMetadataV11: ErrorMetadataV11;
@@ -730,6 +729,8 @@ declare module '@polkadot/types/types/registry' {
     Phantom: Phantom;
     PhantomData: PhantomData;
     Phase: Phase;
+    PhoenixRuntimeOpaqueSessionKeys: PhoenixRuntimeOpaqueSessionKeys;
+    PhoenixRuntimeProxyType: PhoenixRuntimeProxyType;
     PhragmenScore: PhragmenScore;
     Points: Points;
     PortableType: PortableType;
@@ -746,9 +747,6 @@ declare module '@polkadot/types/types/registry' {
     PropIndex: PropIndex;
     Proposal: Proposal;
     ProposalIndex: ProposalIndex;
-    ProposalStatus: ProposalStatus;
-    ProposalVotes: ProposalVotes;
-    ProvisioningParameters: ProvisioningParameters;
     ProxyAnnouncement: ProxyAnnouncement;
     ProxyDefinition: ProxyDefinition;
     ProxyState: ProxyState;
@@ -806,7 +804,6 @@ declare module '@polkadot/types/types/registry' {
     ReportIdOf: ReportIdOf;
     ReserveData: ReserveData;
     ReserveIdentifier: ReserveIdentifier;
-    ResourceId: ResourceId;
     Response: Response;
     ResponseV0: ResponseV0;
     ResponseV1: ResponseV1;
@@ -994,14 +991,12 @@ declare module '@polkadot/types/types/registry' {
     Text: Text;
     Timepoint: Timepoint;
     TokenError: TokenError;
-    TokenId: TokenId;
     TokenInfo: TokenInfo;
     TokenSymbol: TokenSymbol;
     TombstoneContractInfo: TombstoneContractInfo;
     TraceBlockResponse: TraceBlockResponse;
     TraceError: TraceError;
     TradingPair: TradingPair;
-    TradingPairStatus: TradingPairStatus;
     TransactionInfo: TransactionInfo;
     TransactionPriority: TransactionPriority;
     TransactionStorageProof: TransactionStorageProof;
@@ -1027,6 +1022,8 @@ declare module '@polkadot/types/types/registry' {
     U64: U64;
     u8: u8;
     U8: U8;
+    UlasRuntimeOpaqueSessionKeys: UlasRuntimeOpaqueSessionKeys;
+    UlasRuntimeProxyType: UlasRuntimeProxyType;
     UnappliedSlash: UnappliedSlash;
     UnappliedSlashOther: UnappliedSlashOther;
     UncleEntryItem: UncleEntryItem;

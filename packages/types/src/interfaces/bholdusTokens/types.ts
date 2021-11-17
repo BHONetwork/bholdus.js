@@ -1,13 +1,12 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import type { CurrencyId } from '@bholdus/types/interfaces/bholdusPrimitives';
-import type { Bytes, Compact, Data, Struct, Vec, bool, u32, u8 } from '@polkadot/types';
+import type { Bytes, Compact, Data, Struct, Vec, bool, u32, u64, u8 } from '@polkadot/types';
 import type { AccountId, Balance, BalanceOf } from '@polkadot/types/interfaces/runtime';
 import type { ITuple } from '@polkadot/types/types';
 
 /** @name AssetId */
-export interface AssetId extends CurrencyId {}
+export interface AssetId extends u64 {}
 
 /** @name BasicInformation */
 export interface BasicInformation extends Struct {

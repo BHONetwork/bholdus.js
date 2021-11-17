@@ -1,16 +1,14 @@
 // Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable */
 
-import type { BholdusChainbridgeProposalVotes } from '@bholdus/types/interfaces/bholdusChainbridge';
-import type { BholdusDexTradingPairStatus } from '@bholdus/types/interfaces/bholdusDex';
+import type { BholdusBridgeNativeTransferOutboundTransferInfo } from '@bholdus/types/interfaces/bholdusBridgeNativeTransfer';
+import type { BeefyPrimitivesCryptoPublic, BeefyPrimitivesMmrBeefyNextAuthoritySet } from '@bholdus/types/interfaces/bholdusCommon';
 import type { SupportNftClassInfo, SupportNftTokenInfo } from '@bholdus/types/interfaces/bholdusNft';
-import type { BholdusPrimitivesCurrencyCurrencyId, BholdusPrimitivesDexTradingPair } from '@bholdus/types/interfaces/bholdusPrimitives';
-import type { BeefyPrimitivesCryptoPublic, BeefyPrimitivesMmrBeefyNextAuthoritySet, BholdusRuntimeOpaqueSessionKeys } from '@bholdus/types/interfaces/bholdusRuntime';
 import type { BholdusTokensApproval, BholdusTokensAssetBalance, BholdusTokensAssetDetails, BholdusTokensAssetMetadata, BholdusTokensRegistration } from '@bholdus/types/interfaces/bholdusTokens';
-import type { BscPrimitivesBscHeader } from '@bholdus/types/interfaces/bscPrimitives';
+import type { PhoenixRuntimeOpaqueSessionKeys } from '@bholdus/types/interfaces/phoenixRuntime';
 import type { ApiTypes } from '@polkadot/api/types';
-import type { BTreeMap, Bytes, Data, Null, Option, U8aFixed, Vec, WrapperOpaque, bool, u128, u32, u64, u8 } from '@polkadot/types';
-import type { AccountId32, Call, H160, H256, Perbill, Percent } from '@polkadot/types/interfaces/runtime';
+import type { BTreeMap, Bytes, Data, Option, U8aFixed, Vec, WrapperOpaque, bool, u128, u16, u32, u64 } from '@polkadot/types';
+import type { AccountId32, Call, H256, Perbill, Percent } from '@polkadot/types/interfaces/runtime';
 import type { FrameSupportWeightsPerDispatchClassU64, FrameSystemAccountInfo, FrameSystemEventRecord, FrameSystemLastRuntimeUpgradeInfo, FrameSystemPhase, PalletAuthorshipUncleEntryItem, PalletBagsListListBag, PalletBagsListListNode, PalletBalancesAccountData, PalletBalancesBalanceLock, PalletBalancesReleases, PalletBalancesReserveData, PalletBountiesBounty, PalletCollectiveVotes, PalletContractsStorageDeletedContract, PalletContractsStorageRawContractInfo, PalletContractsWasmPrefabWasmModule, PalletElectionProviderMultiPhasePhase, PalletElectionProviderMultiPhaseReadySolution, PalletElectionProviderMultiPhaseRoundSnapshot, PalletElectionProviderMultiPhaseSignedSignedSubmission, PalletElectionProviderMultiPhaseSolutionOrSnapshotSize, PalletGrandpaStoredPendingChange, PalletGrandpaStoredState, PalletIdentityRegistrarInfo, PalletIdentityRegistration, PalletImOnlineBoundedOpaqueNetworkState, PalletImOnlineSr25519AppSr25519Public, PalletMultisigMultisig, PalletProxyAnnouncement, PalletProxyProxyDefinition, PalletRecoveryActiveRecovery, PalletRecoveryRecoveryConfig, PalletSchedulerReleases, PalletSchedulerScheduledV2, PalletStakingActiveEraInfo, PalletStakingEraRewardPoints, PalletStakingExposure, PalletStakingForcing, PalletStakingNominations, PalletStakingReleases, PalletStakingRewardDestination, PalletStakingSlashingSlashingSpans, PalletStakingSlashingSpanRecord, PalletStakingStakingLedger, PalletStakingUnappliedSlash, PalletStakingValidatorPrefs, PalletTransactionPaymentReleases, PalletTreasuryProposal, SpCoreCryptoKeyTypeId, SpRuntimeDigest, SpStakingOffenceOffenceDetails } from '@polkadot/types/lookup';
 import type { AnyNumber, ITuple, Observable } from '@polkadot/types/types';
 
@@ -117,6 +115,10 @@ declare module '@polkadot/api/types/storage' {
        **/
       nextClassId: AugmentedQuery<ApiType, () => Observable<u32>, []> & QueryableStorageEntry<ApiType, []>;
       /**
+       * Next available group ID.
+       **/
+      nextGroupId: AugmentedQuery<ApiType, () => Observable<u32>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
        * Next available token ID.
        **/
       nextTokenId: AugmentedQuery<ApiType, (arg: u32 | AnyNumber | Uint8Array) => Observable<u64>, [u32]> & QueryableStorageEntry<ApiType, [u32]>;
@@ -127,9 +129,13 @@ declare module '@polkadot/api/types/storage' {
        **/
       tokens: AugmentedQuery<ApiType, (arg1: u32 | AnyNumber | Uint8Array, arg2: u64 | AnyNumber | Uint8Array) => Observable<Option<SupportNftTokenInfo>>, [u32, u64]> & QueryableStorageEntry<ApiType, [u32, u64]>;
       /**
+       * Store group info
+       **/
+      tokensByGroup: AugmentedQuery<ApiType, (arg1: u32 | AnyNumber | Uint8Array, arg2: u32 | AnyNumber | Uint8Array, arg3: u64 | AnyNumber | Uint8Array) => Observable<Option<u64>>, [u32, u32, u64]> & QueryableStorageEntry<ApiType, [u32, u32, u64]>;
+      /**
        * Token existence check by owner and class ID.
        **/
-      tokensByOwner: AugmentedQuery<ApiType, (arg1: AccountId32 | string | Uint8Array, arg2: u32 | AnyNumber | Uint8Array, arg3: u64 | AnyNumber | Uint8Array) => Observable<Null>, [AccountId32, u32, u64]> & QueryableStorageEntry<ApiType, [AccountId32, u32, u64]>;
+      tokensByOwner: AugmentedQuery<ApiType, (arg1: AccountId32 | string | Uint8Array, arg2: u32 | AnyNumber | Uint8Array, arg3: u64 | AnyNumber | Uint8Array) => Observable<ITuple<[AccountId32, u64]>>, [AccountId32, u32, u64]> & QueryableStorageEntry<ApiType, [AccountId32, u32, u64]>;
       /**
        * Generic query
        **/
@@ -157,66 +163,37 @@ declare module '@polkadot/api/types/storage' {
        **/
       [key: string]: QueryableStorageEntry<ApiType>;
     };
-    bsc: {
+    bridgeNativeTransfer: {
       /**
-       * [`Authorities`] is the set of qualified authorities that currently active or activated in previous rounds
-       * this was added to track the older qualified authorities, to make sure we can verify a older header
+       * The outbound transfer id waiting to be confirmed
        **/
-      authorities: AugmentedQuery<ApiType, () => Observable<Vec<H160>>, []> & QueryableStorageEntry<ApiType, []>;
+      nextConfirmOutboundTransferId: AugmentedQuery<ApiType, () => Observable<u128>, []> & QueryableStorageEntry<ApiType, []>;
       /**
-       * [`AuthoritiesOfRound`] use a `Map<u64, Vec<u32>>` structure to track the active authorities in every epoch
-       * the key is `checkpoint.number / epoch_length`
-       * the value is the index of authorities which extracted from checkpoint block header
-       * So the the order of authorities vector **MUST** be stable.
+       * The inbound transfer id that should be received next
        **/
-      authoritiesOfRound: AugmentedQuery<ApiType, (arg: u64 | AnyNumber | Uint8Array) => Observable<Vec<u32>>, [u64]> & QueryableStorageEntry<ApiType, [u64]>;
-      finalizedAuthority: AugmentedQuery<ApiType, () => Observable<Vec<H160>>, []> & QueryableStorageEntry<ApiType, []>;
-      finalizedCheckpoint: AugmentedQuery<ApiType, () => Observable<BscPrimitivesBscHeader>, []> & QueryableStorageEntry<ApiType, []>;
+      nextInboundTransferId: AugmentedQuery<ApiType, () => Observable<u128>, []> & QueryableStorageEntry<ApiType, []>;
       /**
-       * Generic query
+       * Next outbound transfer id for the next transfer initiated by user.
        **/
-      [key: string]: QueryableStorageEntry<ApiType>;
-    };
-    chainBridge: {
+      nextOutboundTransferId: AugmentedQuery<ApiType, () => Observable<u128>, []> & QueryableStorageEntry<ApiType, []>;
       /**
-       * All whitelisted chains and their respective transaction counts
+       * Outbound transfers are stored here
        **/
-      chainNonces: AugmentedQuery<ApiType, (arg: u8 | AnyNumber | Uint8Array) => Observable<Option<u64>>, [u8]> & QueryableStorageEntry<ApiType, [u8]>;
+      outboundTransfers: AugmentedQuery<ApiType, (arg: u128 | AnyNumber | Uint8Array) => Observable<Option<BholdusBridgeNativeTransferOutboundTransferInfo>>, [u128]> & QueryableStorageEntry<ApiType, [u128]>;
       /**
-       * Number of relayers in set
+       * Registered Chains
+       * Only registered chains is supported for crosschain transfer
        **/
-      relayerCount: AugmentedQuery<ApiType, () => Observable<u32>, []> & QueryableStorageEntry<ApiType, []>;
+      registeredChains: AugmentedQuery<ApiType, (arg: u16 | AnyNumber | Uint8Array) => Observable<bool>, [u16]> & QueryableStorageEntry<ApiType, [u16]>;
       /**
-       * Tracks current relayer set
+       * Registered Relayers.
+       * Only registered relayers can submit a transfer to release tokens to users
        **/
-      relayers: AugmentedQuery<ApiType, (arg: AccountId32 | string | Uint8Array) => Observable<bool>, [AccountId32]> & QueryableStorageEntry<ApiType, [AccountId32]>;
+      registeredRelayers: AugmentedQuery<ApiType, (arg: AccountId32 | string | Uint8Array) => Observable<bool>, [AccountId32]> & QueryableStorageEntry<ApiType, [AccountId32]>;
       /**
-       * Number of votes required for a proposal to execute
+       * The service fee rate to charge users
        **/
-      relayerThreshold: AugmentedQuery<ApiType, () => Observable<u32>, []> & QueryableStorageEntry<ApiType, []>;
-      /**
-       * Utilized by the bridge software to map resource IDs to actual methods
-       **/
-      resources: AugmentedQuery<ApiType, (arg: U8aFixed | string | Uint8Array) => Observable<Option<Bytes>>, [U8aFixed]> & QueryableStorageEntry<ApiType, [U8aFixed]>;
-      /**
-       * All known proposals.
-       * The key is the hash of the call and the deposit ID, to ensure it's unique.
-       **/
-      votes: AugmentedQuery<ApiType, (arg1: u8 | AnyNumber | Uint8Array, arg2: ITuple<[u64, Call]> | [u64 | AnyNumber | Uint8Array, Call | { callIndex?: any; args?: any } | string | Uint8Array]) => Observable<Option<BholdusChainbridgeProposalVotes>>, [u8, ITuple<[u64, Call]>]> & QueryableStorageEntry<ApiType, [u8, ITuple<[u64, Call]>]>;
-      /**
-       * Generic query
-       **/
-      [key: string]: QueryableStorageEntry<ApiType>;
-    };
-    chainBridgeTransfer: {
-      /**
-       * Mapping from CurrencyId to ResourceId
-       **/
-      currencyIdToResourceId: AugmentedQuery<ApiType, (arg: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array) => Observable<Option<U8aFixed>>, [BholdusPrimitivesCurrencyCurrencyId]> & QueryableStorageEntry<ApiType, [BholdusPrimitivesCurrencyCurrencyId]>;
-      /**
-       * Mapping from ResourceId to CurrencyId
-       **/
-      resourceIdToCurrencyId: AugmentedQuery<ApiType, (arg: U8aFixed | string | Uint8Array) => Observable<Option<BholdusPrimitivesCurrencyCurrencyId>>, [U8aFixed]> & QueryableStorageEntry<ApiType, [U8aFixed]>;
+      serviceFeeRate: AugmentedQuery<ApiType, () => Observable<ITuple<[u32, u32]>>, []> & QueryableStorageEntry<ApiType, []>;
       /**
        * Generic query
        **/
@@ -278,30 +255,6 @@ declare module '@polkadot/api/types/storage' {
        * Votes on a given proposal, if it is ongoing.
        **/
       voting: AugmentedQuery<ApiType, (arg: H256 | string | Uint8Array) => Observable<Option<PalletCollectiveVotes>>, [H256]> & QueryableStorageEntry<ApiType, [H256]>;
-      /**
-       * Generic query
-       **/
-      [key: string]: QueryableStorageEntry<ApiType>;
-    };
-    dex: {
-      /**
-       * Initial share exchange rates for each trading pair.
-       * Used to calculate share amount for first liqudity providers.
-       **/
-      initialShareExchangeRate: AugmentedQuery<ApiType, (arg: BholdusPrimitivesDexTradingPair) => Observable<ITuple<[u128, u128]>>, [BholdusPrimitivesDexTradingPair]> & QueryableStorageEntry<ApiType, [BholdusPrimitivesDexTradingPair]>;
-      /**
-       * Reserves of trading pairs.
-       **/
-      liquidityPool: AugmentedQuery<ApiType, (arg: BholdusPrimitivesDexTradingPair) => Observable<ITuple<[u128, u128]>>, [BholdusPrimitivesDexTradingPair]> & QueryableStorageEntry<ApiType, [BholdusPrimitivesDexTradingPair]>;
-      /**
-       * Provision of each user added to a trading pair when that trading pair is in `provisioning`
-       * status.
-       **/
-      provisioningPool: AugmentedQuery<ApiType, (arg1: BholdusPrimitivesDexTradingPair, arg2: AccountId32 | string | Uint8Array) => Observable<ITuple<[u128, u128]>>, [BholdusPrimitivesDexTradingPair, AccountId32]> & QueryableStorageEntry<ApiType, [BholdusPrimitivesDexTradingPair, AccountId32]>;
-      /**
-       * Status of trading pairs.
-       **/
-      tradingPairStatuses: AugmentedQuery<ApiType, (arg: BholdusPrimitivesDexTradingPair) => Observable<BholdusDexTradingPairStatus>, [BholdusPrimitivesDexTradingPair]> & QueryableStorageEntry<ApiType, [BholdusPrimitivesDexTradingPair]>;
       /**
        * Generic query
        **/
@@ -653,7 +606,7 @@ declare module '@polkadot/api/types/storage' {
       /**
        * The next session keys for a validator.
        **/
-      nextKeys: AugmentedQuery<ApiType, (arg: AccountId32 | string | Uint8Array) => Observable<Option<BholdusRuntimeOpaqueSessionKeys>>, [AccountId32]> & QueryableStorageEntry<ApiType, [AccountId32]>;
+      nextKeys: AugmentedQuery<ApiType, (arg: AccountId32 | string | Uint8Array) => Observable<Option<PhoenixRuntimeOpaqueSessionKeys>>, [AccountId32]> & QueryableStorageEntry<ApiType, [AccountId32]>;
       /**
        * True if the underlying economic identities or weighting behind the validators
        * has changed in the queued validator set.
@@ -663,7 +616,7 @@ declare module '@polkadot/api/types/storage' {
        * The queued keys for the next session. When the next session begins, these keys
        * will be used to determine the validator's session keys.
        **/
-      queuedKeys: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[AccountId32, BholdusRuntimeOpaqueSessionKeys]>>>, []> & QueryableStorageEntry<ApiType, []>;
+      queuedKeys: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[AccountId32, PhoenixRuntimeOpaqueSessionKeys]>>>, []> & QueryableStorageEntry<ApiType, []>;
       /**
        * The current set of validators.
        **/
@@ -1020,27 +973,28 @@ declare module '@polkadot/api/types/storage' {
       /**
        * The number of units of assets held by any given account.
        **/
-      account: AugmentedQuery<ApiType, (arg1: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, arg2: AccountId32 | string | Uint8Array) => Observable<BholdusTokensAssetBalance>, [BholdusPrimitivesCurrencyCurrencyId, AccountId32]> & QueryableStorageEntry<ApiType, [BholdusPrimitivesCurrencyCurrencyId, AccountId32]>;
+      account: AugmentedQuery<ApiType, (arg1: u64 | AnyNumber | Uint8Array, arg2: AccountId32 | string | Uint8Array) => Observable<BholdusTokensAssetBalance>, [u64, AccountId32]> & QueryableStorageEntry<ApiType, [u64, AccountId32]>;
       /**
        * Approved balance transfer. First balance is the amount approved for transfer. Second
        * is the amount of `T::Currency` reserved for storing this.
        * First key is the asset ID, second key is the owner and third key is the delegate.
        **/
-      approvals: AugmentedQuery<ApiType, (arg1: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, arg2: AccountId32 | string | Uint8Array, arg3: AccountId32 | string | Uint8Array) => Observable<Option<BholdusTokensApproval>>, [BholdusPrimitivesCurrencyCurrencyId, AccountId32, AccountId32]> & QueryableStorageEntry<ApiType, [BholdusPrimitivesCurrencyCurrencyId, AccountId32, AccountId32]>;
+      approvals: AugmentedQuery<ApiType, (arg1: u64 | AnyNumber | Uint8Array, arg2: AccountId32 | string | Uint8Array, arg3: AccountId32 | string | Uint8Array) => Observable<Option<BholdusTokensApproval>>, [u64, AccountId32, AccountId32]> & QueryableStorageEntry<ApiType, [u64, AccountId32, AccountId32]>;
       /**
        * Details of an asset.
        **/
-      asset: AugmentedQuery<ApiType, (arg: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array) => Observable<Option<BholdusTokensAssetDetails>>, [BholdusPrimitivesCurrencyCurrencyId]> & QueryableStorageEntry<ApiType, [BholdusPrimitivesCurrencyCurrencyId]>;
+      asset: AugmentedQuery<ApiType, (arg: u64 | AnyNumber | Uint8Array) => Observable<Option<BholdusTokensAssetDetails>>, [u64]> & QueryableStorageEntry<ApiType, [u64]>;
       /**
        * Information that is pertinet to identity the entity behind an account.
        * 
        * TWOX-NOTE: OK - `AccountId` is a secure hash.
        **/
-      identityOf: AugmentedQuery<ApiType, (arg: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array) => Observable<Option<BholdusTokensRegistration>>, [BholdusPrimitivesCurrencyCurrencyId]> & QueryableStorageEntry<ApiType, [BholdusPrimitivesCurrencyCurrencyId]>;
+      identityOf: AugmentedQuery<ApiType, (arg: u64 | AnyNumber | Uint8Array) => Observable<Option<BholdusTokensRegistration>>, [u64]> & QueryableStorageEntry<ApiType, [u64]>;
       /**
        * Metadata of an asset.
        **/
-      metadata: AugmentedQuery<ApiType, (arg: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array) => Observable<BholdusTokensAssetMetadata>, [BholdusPrimitivesCurrencyCurrencyId]> & QueryableStorageEntry<ApiType, [BholdusPrimitivesCurrencyCurrencyId]>;
+      metadata: AugmentedQuery<ApiType, (arg: u64 | AnyNumber | Uint8Array) => Observable<BholdusTokensAssetMetadata>, [u64]> & QueryableStorageEntry<ApiType, [u64]>;
+      nextAssetId: AugmentedQuery<ApiType, () => Observable<u64>, []> & QueryableStorageEntry<ApiType, []>;
       /**
        * Generic query
        **/

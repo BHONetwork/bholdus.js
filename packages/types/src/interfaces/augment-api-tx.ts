@@ -1,10 +1,8 @@
 // Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable */
 
-import type { BholdusPrimitivesCurrencyCurrencyId } from '@bholdus/types/interfaces/bholdusPrimitives';
-import type { BholdusRuntimeOpaqueSessionKeys, BholdusRuntimeProxyType } from '@bholdus/types/interfaces/bholdusRuntime';
 import type { BholdusTokensAssetIdentity, BholdusTokensDestroyWitness } from '@bholdus/types/interfaces/bholdusTokens';
-import type { BscPrimitivesBscHeader } from '@bholdus/types/interfaces/bscPrimitives';
+import type { PhoenixRuntimeOpaqueSessionKeys, PhoenixRuntimeProxyType } from '@bholdus/types/interfaces/phoenixRuntime';
 import type { ApiTypes, SubmittableExtrinsic } from '@polkadot/api/types';
 import type { BTreeMap, Bytes, Compact, Data, Option, U8aFixed, Vec, bool, u128, u16, u32, u64, u8 } from '@polkadot/types';
 import type { Extrinsic } from '@polkadot/types/interfaces/extrinsics';
@@ -274,136 +272,57 @@ declare module '@polkadot/api/types/submittable' {
        **/
       [key: string]: SubmittableExtrinsicFunction<ApiType>;
     };
-    bsc: {
+    bridgeNativeTransfer: {
       /**
-       * Verify signed relayed headers and finalize authority set
+       * Outbound
+       * Relayer will call this function to confirm the transfer and claim their rewards
        **/
-      verifyAndUpdateAuthoritySetSigned: AugmentedSubmittable<(headers: Vec<BscPrimitivesBscHeader> | (BscPrimitivesBscHeader | { parentHash?: any; uncleHash?: any; coinbase?: any; stateRoot?: any; transactionsRoot?: any; receiptsRoot?: any; logBloom?: any; difficulty?: any; number?: any; gasLimit?: any; gasUsed?: any; timestamp?: any; extraData?: any; mixDigest?: any; nonce?: any } | string | Uint8Array)[]) => SubmittableExtrinsic<ApiType>, [Vec<BscPrimitivesBscHeader>]>;
+      confirmTransfer: AugmentedSubmittable<(transferId: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u128]>;
       /**
-       * Verify unsigned relayed headers and finalize authority set
+       * Register chain id that crosschain transfer supports
+       * Chain id will be pre-defined by Bholdus team
+       * Only `AdminOrigin` can access this operation
        **/
-      verifyAndUpdateAuthoritySetUnsigned: AugmentedSubmittable<(headers: Vec<BscPrimitivesBscHeader> | (BscPrimitivesBscHeader | { parentHash?: any; uncleHash?: any; coinbase?: any; stateRoot?: any; transactionsRoot?: any; receiptsRoot?: any; logBloom?: any; difficulty?: any; number?: any; gasLimit?: any; gasUsed?: any; timestamp?: any; extraData?: any; mixDigest?: any; nonce?: any } | string | Uint8Array)[]) => SubmittableExtrinsic<ApiType>, [Vec<BscPrimitivesBscHeader>]>;
+      forceRegisterChain: AugmentedSubmittable<(chain: u16 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u16]>;
       /**
-       * Generic tx
+       * Register relayer account responsible for relaying transfer between chains
+       * Only `AdminOrigin` can access this operation
        **/
-      [key: string]: SubmittableExtrinsicFunction<ApiType>;
-    };
-    chainBridge: {
+      forceRegisterRelayer: AugmentedSubmittable<(relayer: AccountId32 | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32]>;
       /**
-       * Commits a vote in favour of the provided proposal.
-       * 
-       * If a proposal with the given nonce and source chain ID does not already exist, it will
-       * be created with an initial vote in favour from the caller.
-       * 
-       * # <weight>
-       * - weight of proposed call, regardless of whether execution is performed
-       * # </weight>
+       * Set service fee that user will be charged when initiates a transfer
+       * Only `AdminOrigin` can access this operation
        **/
-      acknowledgeProposal: AugmentedSubmittable<(nonce: u64 | AnyNumber | Uint8Array, srcId: u8 | AnyNumber | Uint8Array, rId: U8aFixed | string | Uint8Array, call: Call | { callIndex?: any; args?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [u64, u8, U8aFixed, Call]>;
+      forceSetServiceFee: AugmentedSubmittable<(serviceFeeRate: ITuple<[u32, u32]> | [u32 | AnyNumber | Uint8Array, u32 | AnyNumber | Uint8Array]) => SubmittableExtrinsic<ApiType>, [ITuple<[u32, u32]>]>;
       /**
-       * Adds a new relayer to the relayer set.
-       * 
-       * # <weight>
-       * - O(1) lookup and insert
-       * # </weight>
+       * Unregister chain id
+       * Chain id will be pre-defined by Bholdus team
+       * Only `AdminOrigin` can access this operation
        **/
-      addRelayer: AugmentedSubmittable<(v: AccountId32 | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32]>;
+      forceUnregisterChain: AugmentedSubmittable<(chain: u16 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u16]>;
       /**
-       * Evaluate the state of a proposal given the current vote threshold.
-       * 
-       * A proposal with enough votes will be either executed or cancelled, and the status
-       * will be updated accordingly.
-       * 
-       * # <weight>
-       * - weight of proposed call, regardless of whether execution is performed
-       * # </weight>
+       * Unregister relayer account
+       * Only `AdminOrigin` can access this operation
        **/
-      evalVoteState: AugmentedSubmittable<(nonce: u64 | AnyNumber | Uint8Array, srcId: u8 | AnyNumber | Uint8Array, prop: Call | { callIndex?: any; args?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [u64, u8, Call]>;
+      forceUnregisterRelayer: AugmentedSubmittable<(relayer: AccountId32 | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32]>;
       /**
-       * Commits a vote against a provided proposal.
-       * 
-       * # <weight>
-       * - Fixed, since execution of proposal should not be included
-       * # </weight>
+       * Withdraw tokens locked in this pallet to some account
+       * This operation is mainly used for any migration in the future
+       * Only `AdminOrigin` can access this operation
        **/
-      rejectProposal: AugmentedSubmittable<(nonce: u64 | AnyNumber | Uint8Array, srcId: u8 | AnyNumber | Uint8Array, rId: U8aFixed | string | Uint8Array, call: Call | { callIndex?: any; args?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [u64, u8, U8aFixed, Call]>;
+      forceWithdraw: AugmentedSubmittable<(to: AccountId32 | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32]>;
       /**
-       * Removes an existing relayer from the set.
-       * 
-       * # <weight>
-       * - O(1) lookup and removal
-       * # </weight>
+       * Outbound
+       * User should submit this extrinsic to initiate a crosschain transfer.
+       * User will be charged with additional service fee.
+       * This service fee is rewarded to the relayer if the execution on the target chain succeeds.
        **/
-      removeRelayer: AugmentedSubmittable<(v: AccountId32 | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32]>;
+      initiateTransfer: AugmentedSubmittable<(to: Bytes | string | Uint8Array, amount: u128 | AnyNumber | Uint8Array, targetChain: u16 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [Bytes, u128, u16]>;
       /**
-       * Removes a resource ID from the resource mapping.
-       * 
-       * After this call, bridge transfers with the associated resource ID will
-       * be rejected.
-       * 
-       * # <weight>
-       * - O(1) removal
-       * # </weight>
+       * Inbound
+       * Relayer call this to release tokens to user corresponding to transfer sent from other chains.
        **/
-      removeResource: AugmentedSubmittable<(id: U8aFixed | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [U8aFixed]>;
-      /**
-       * Stores a method name on chain under an associated resource ID.
-       * 
-       * # <weight>
-       * - O(1) write
-       * # </weight>
-       **/
-      setResource: AugmentedSubmittable<(id: U8aFixed | string | Uint8Array, method: Bytes | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [U8aFixed, Bytes]>;
-      /**
-       * Sets the vote threshold for proposals.
-       * 
-       * This threshold is used to determine how many votes are required
-       * before a proposal is executed.
-       * 
-       * # <weight>
-       * - O(1) lookup and insert
-       * # </weight>
-       **/
-      setThreshold: AugmentedSubmittable<(threshold: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32]>;
-      /**
-       * Enables a chain ID as a source or destination for a bridge transfer.
-       * 
-       * # <weight>
-       * - O(1) lookup and insert
-       * # </weight>
-       **/
-      whitelistChain: AugmentedSubmittable<(id: u8 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u8]>;
-      /**
-       * Generic tx
-       **/
-      [key: string]: SubmittableExtrinsicFunction<ApiType>;
-    };
-    chainBridgeTransfer: {
-      /**
-       * Same as `transfer_from_bridge` but for admin
-       * Use this call to refund locked tokens to users.
-       * Useful in cases when errors happened and user's funds locked in pallet.
-       **/
-      adminTransferFromBridge: AugmentedSubmittable<(currencyId: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, to: AccountId32 | string | Uint8Array, amount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusPrimitivesCurrencyCurrencyId, AccountId32, u128]>;
-      /**
-       * Register resource id with currency id
-       **/
-      registerResourceId: AugmentedSubmittable<(resourceId: U8aFixed | string | Uint8Array, currencyId: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [U8aFixed, BholdusPrimitivesCurrencyCurrencyId]>;
-      /**
-       * Unregister resource id
-       **/
-      removeResourceId: AugmentedSubmittable<(resourceId: U8aFixed | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [U8aFixed]>;
-      /**
-       * Transfer token locked in ChainBridge pallet to user.
-       * Relayer will use the name of this call to make a proposal to ChainBridge.
-       * Only ChainBridge pallet can execute this call as a result of accepted proposal.
-       **/
-      transferFromBridge: AugmentedSubmittable<(to: AccountId32 | string | Uint8Array, amount: u128 | AnyNumber | Uint8Array, resourceId: U8aFixed | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, u128, U8aFixed]>;
-      transferNativeToBridge: AugmentedSubmittable<(destChainId: u8 | AnyNumber | Uint8Array, recipient: Bytes | string | Uint8Array, amount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u8, Bytes, u128]>;
-      /**
-       * Initiate token transfer
-       **/
-      transferToBridge: AugmentedSubmittable<(currencyId: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, destId: u8 | AnyNumber | Uint8Array, to: Bytes | string | Uint8Array, amount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusPrimitivesCurrencyCurrencyId, u8, Bytes, u128]>;
+      releaseTokens: AugmentedSubmittable<(transferId: u128 | AnyNumber | Uint8Array, from: Bytes | string | Uint8Array, to: AccountId32 | string | Uint8Array, amount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u128, Bytes, AccountId32, u128]>;
       /**
        * Generic tx
        **/
@@ -601,99 +520,6 @@ declare module '@polkadot/api/types/submittable' {
        * # </weight>
        **/
       vote: AugmentedSubmittable<(proposal: H256 | string | Uint8Array, index: Compact<u32> | AnyNumber | Uint8Array, approve: bool | boolean | Uint8Array) => SubmittableExtrinsic<ApiType>, [H256, Compact<u32>, bool]>;
-      /**
-       * Generic tx
-       **/
-      [key: string]: SubmittableExtrinsicFunction<ApiType>;
-    };
-    currencies: {
-      /**
-       * Transfer some balance to another account under `currency_id`.
-       * 
-       * The dispatch origin for this call must be `Signed` by the
-       * transactor.
-       **/
-      transfer: AugmentedSubmittable<(dest: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, currencyId: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, amount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, BholdusPrimitivesCurrencyCurrencyId, Compact<u128>]>;
-      /**
-       * Transfer some native currency to another account.
-       * 
-       * The dispatch origin for this call must be `Signed` by the
-       * transactor.
-       **/
-      transferNativeCurrency: AugmentedSubmittable<(dest: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, amount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, Compact<u128>]>;
-      /**
-       * Generic tx
-       **/
-      [key: string]: SubmittableExtrinsicFunction<ApiType>;
-    };
-    dex: {
-      /**
-       * Add liquidity to enabled trading pair
-       * 
-       * TODO: Weight benchmarking
-       **/
-      addLiquidity: AugmentedSubmittable<(currencyId0: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, currencyId1: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, maxAmount0: Compact<u128> | AnyNumber | Uint8Array, maxAmount1: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusPrimitivesCurrencyCurrencyId, BholdusPrimitivesCurrencyCurrencyId, Compact<u128>, Compact<u128>]>;
-      /**
-       * Add provision to a provisioning trading pair
-       * 
-       * TODO: Weight benchmarking
-       **/
-      addTradingPairProvision: AugmentedSubmittable<(currencyId0: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, currencyId1: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, contribution0: Compact<u128> | AnyNumber | Uint8Array, contribution1: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusPrimitivesCurrencyCurrencyId, BholdusPrimitivesCurrencyCurrencyId, Compact<u128>, Compact<u128>]>;
-      /**
-       * Claim dex share. Founders that add provision to trading pair in provisioning stage can
-       * use this call to claim their dex share
-       **/
-      claimDexShare: AugmentedSubmittable<(owner: AccountId32 | string | Uint8Array, currencyId0: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, currencyId1: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, BholdusPrimitivesCurrencyCurrencyId, BholdusPrimitivesCurrencyCurrencyId]>;
-      /**
-       * Enable provisioning trading pair
-       * 
-       * TODO: Weight benchmarking
-       **/
-      enableProvisioningTradingPair: AugmentedSubmittable<(currencyId0: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, currencyId1: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusPrimitivesCurrencyCurrencyId, BholdusPrimitivesCurrencyCurrencyId]>;
-      /**
-       * Enable trading pair from disabled or provisioning with zero accumulated provision
-       * 
-       * TODO: Weight benchmarking
-       **/
-      enableTradingPair: AugmentedSubmittable<(currencyId0: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, currencyId1: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusPrimitivesCurrencyCurrencyId, BholdusPrimitivesCurrencyCurrencyId]>;
-      /**
-       * Remove liquidity
-       * 
-       * TODO: Weight benchmarking
-       **/
-      removeLiquidity: AugmentedSubmittable<(currencyId0: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, currencyId1: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, removeShareAmount: Compact<u128> | AnyNumber | Uint8Array, minWithdrawnAmount0: Compact<u128> | AnyNumber | Uint8Array, minWithdrawnAmount1: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusPrimitivesCurrencyCurrencyId, BholdusPrimitivesCurrencyCurrencyId, Compact<u128>, Compact<u128>, Compact<u128>]>;
-      /**
-       * Start provisioning stage of a trading pair
-       * 
-       * TODO: Weight benchmarking
-       **/
-      startTradingPairProvisioning: AugmentedSubmittable<(currencyId0: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, currencyId1: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, minContribution0: Compact<u128> | AnyNumber | Uint8Array, minContribution1: Compact<u128> | AnyNumber | Uint8Array, targetContribution0: Compact<u128> | AnyNumber | Uint8Array, targetContribution1: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusPrimitivesCurrencyCurrencyId, BholdusPrimitivesCurrencyCurrencyId, Compact<u128>, Compact<u128>, Compact<u128>, Compact<u128>]>;
-      /**
-       * Trading with DEX, swap with exact supply amount.
-       * 
-       * - `path`: trading path.
-       * - `supply_amount`: exact supply amount.
-       * - `min_target_amount`: acceptable target amount.
-       * 
-       * TODO: Weight benchmarking
-       **/
-      swapWithExactSupply: AugmentedSubmittable<(path: Vec<BholdusPrimitivesCurrencyCurrencyId> | (BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array)[], supplyAmount: Compact<u128> | AnyNumber | Uint8Array, minTargetAmount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [Vec<BholdusPrimitivesCurrencyCurrencyId>, Compact<u128>, Compact<u128>]>;
-      /**
-       * Trading with DEX, swap with exact target amount.
-       * 
-       * - `path`: trading path.
-       * - `target_amount`: target amount user wants to receive.
-       * - `max_supply_amount`: maximum supply amount that user willing to pay.
-       * 
-       * Weight benchmarking
-       **/
-      swapWithExactTarget: AugmentedSubmittable<(path: Vec<BholdusPrimitivesCurrencyCurrencyId> | (BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array)[], targetAmount: Compact<u128> | AnyNumber | Uint8Array, maxSupplyAmount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [Vec<BholdusPrimitivesCurrencyCurrencyId>, Compact<u128>, Compact<u128>]>;
-      /**
-       * Update provisioning parameters of provisioning trading pair
-       * 
-       * TODO: Weight benchmarking
-       **/
-      updateTradingPairProvisioningParameters: AugmentedSubmittable<(currencyId0: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, currencyId1: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, minContribution0: Compact<u128> | AnyNumber | Uint8Array, minContribution1: Compact<u128> | AnyNumber | Uint8Array, targetContribution0: Compact<u128> | AnyNumber | Uint8Array, targetContribution1: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusPrimitivesCurrencyCurrencyId, BholdusPrimitivesCurrencyCurrencyId, Compact<u128>, Compact<u128>, Compact<u128>, Compact<u128>]>;
       /**
        * Generic tx
        **/
@@ -1388,7 +1214,7 @@ declare module '@polkadot/api/types/submittable' {
        * Weight is a function of the number of proxies the user has (P).
        * # </weight>
        **/
-      addProxy: AugmentedSubmittable<(delegate: AccountId32 | string | Uint8Array, proxyType: BholdusRuntimeProxyType | 'Any' | 'NonTransfer' | 'Governance' | 'Staking' | number | Uint8Array, delay: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, BholdusRuntimeProxyType, u32]>;
+      addProxy: AugmentedSubmittable<(delegate: AccountId32 | string | Uint8Array, proxyType: PhoenixRuntimeProxyType | 'Any' | 'NonTransfer' | 'Governance' | 'Staking' | number | Uint8Array, delay: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, PhoenixRuntimeProxyType, u32]>;
       /**
        * Publish the hash of a proxy-call that will be made in the future.
        * 
@@ -1438,7 +1264,7 @@ declare module '@polkadot/api/types/submittable' {
        * # </weight>
        * TODO: Might be over counting 1 read
        **/
-      anonymous: AugmentedSubmittable<(proxyType: BholdusRuntimeProxyType | 'Any' | 'NonTransfer' | 'Governance' | 'Staking' | number | Uint8Array, delay: u32 | AnyNumber | Uint8Array, index: u16 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusRuntimeProxyType, u32, u16]>;
+      anonymous: AugmentedSubmittable<(proxyType: PhoenixRuntimeProxyType | 'Any' | 'NonTransfer' | 'Governance' | 'Staking' | number | Uint8Array, delay: u32 | AnyNumber | Uint8Array, index: u16 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [PhoenixRuntimeProxyType, u32, u16]>;
       /**
        * Removes a previously spawned anonymous proxy.
        * 
@@ -1461,7 +1287,7 @@ declare module '@polkadot/api/types/submittable' {
        * Weight is a function of the number of proxies the user has (P).
        * # </weight>
        **/
-      killAnonymous: AugmentedSubmittable<(spawner: AccountId32 | string | Uint8Array, proxyType: BholdusRuntimeProxyType | 'Any' | 'NonTransfer' | 'Governance' | 'Staking' | number | Uint8Array, index: u16 | AnyNumber | Uint8Array, height: Compact<u32> | AnyNumber | Uint8Array, extIndex: Compact<u32> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, BholdusRuntimeProxyType, u16, Compact<u32>, Compact<u32>]>;
+      killAnonymous: AugmentedSubmittable<(spawner: AccountId32 | string | Uint8Array, proxyType: PhoenixRuntimeProxyType | 'Any' | 'NonTransfer' | 'Governance' | 'Staking' | number | Uint8Array, index: u16 | AnyNumber | Uint8Array, height: Compact<u32> | AnyNumber | Uint8Array, extIndex: Compact<u32> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, PhoenixRuntimeProxyType, u16, Compact<u32>, Compact<u32>]>;
       /**
        * Dispatch the given `call` from an account that the sender is authorised for through
        * `add_proxy`.
@@ -1479,7 +1305,7 @@ declare module '@polkadot/api/types/submittable' {
        * Weight is a function of the number of proxies the user has (P).
        * # </weight>
        **/
-      proxy: AugmentedSubmittable<(real: AccountId32 | string | Uint8Array, forceProxyType: Option<BholdusRuntimeProxyType> | null | object | string | Uint8Array, call: Call | { callIndex?: any; args?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, Option<BholdusRuntimeProxyType>, Call]>;
+      proxy: AugmentedSubmittable<(real: AccountId32 | string | Uint8Array, forceProxyType: Option<PhoenixRuntimeProxyType> | null | object | string | Uint8Array, call: Call | { callIndex?: any; args?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, Option<PhoenixRuntimeProxyType>, Call]>;
       /**
        * Dispatch the given `call` from an account that the sender is authorized for through
        * `add_proxy`.
@@ -1499,7 +1325,7 @@ declare module '@polkadot/api/types/submittable' {
        * - P: the number of proxies the user has.
        * # </weight>
        **/
-      proxyAnnounced: AugmentedSubmittable<(delegate: AccountId32 | string | Uint8Array, real: AccountId32 | string | Uint8Array, forceProxyType: Option<BholdusRuntimeProxyType> | null | object | string | Uint8Array, call: Call | { callIndex?: any; args?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, AccountId32, Option<BholdusRuntimeProxyType>, Call]>;
+      proxyAnnounced: AugmentedSubmittable<(delegate: AccountId32 | string | Uint8Array, real: AccountId32 | string | Uint8Array, forceProxyType: Option<PhoenixRuntimeProxyType> | null | object | string | Uint8Array, call: Call | { callIndex?: any; args?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, AccountId32, Option<PhoenixRuntimeProxyType>, Call]>;
       /**
        * Remove the given announcement of a delegate.
        * 
@@ -1564,7 +1390,7 @@ declare module '@polkadot/api/types/submittable' {
        * Weight is a function of the number of proxies the user has (P).
        * # </weight>
        **/
-      removeProxy: AugmentedSubmittable<(delegate: AccountId32 | string | Uint8Array, proxyType: BholdusRuntimeProxyType | 'Any' | 'NonTransfer' | 'Governance' | 'Staking' | number | Uint8Array, delay: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, BholdusRuntimeProxyType, u32]>;
+      removeProxy: AugmentedSubmittable<(delegate: AccountId32 | string | Uint8Array, proxyType: PhoenixRuntimeProxyType | 'Any' | 'NonTransfer' | 'Governance' | 'Staking' | number | Uint8Array, delay: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, PhoenixRuntimeProxyType, u32]>;
       /**
        * Generic tx
        **/
@@ -1884,7 +1710,7 @@ declare module '@polkadot/api/types/submittable' {
        * - DbWrites per key id: `KeyOwner`
        * # </weight>
        **/
-      setKeys: AugmentedSubmittable<(keys: BholdusRuntimeOpaqueSessionKeys | { grandpa?: any; aura?: any; imOnline?: any; authorityDiscovery?: any; beefy?: any } | string | Uint8Array, proof: Bytes | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusRuntimeOpaqueSessionKeys, Bytes]>;
+      setKeys: AugmentedSubmittable<(keys: PhoenixRuntimeOpaqueSessionKeys | { grandpa?: any; aura?: any; imOnline?: any; authorityDiscovery?: any; beefy?: any } | string | Uint8Array, proof: Bytes | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [PhoenixRuntimeOpaqueSessionKeys, Bytes]>;
       /**
        * Generic tx
        **/
@@ -2535,7 +2361,7 @@ declare module '@polkadot/api/types/submittable' {
        * 
        * Weight: `O(1)`
        **/
-      clearMetadata: AugmentedSubmittable<(id: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusPrimitivesCurrencyCurrencyId]>;
+      clearMetadata: AugmentedSubmittable<(id: u64 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u64]>;
       /**
        * Issue a new class of fungible assets from a public origin.
        * 
@@ -2557,7 +2383,7 @@ declare module '@polkadot/api/types/submittable' {
        * 
        * Weight: `O(1)`
        **/
-      create: AugmentedSubmittable<(id: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, admin: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, minBalance: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusPrimitivesCurrencyCurrencyId, MultiAddress, u128]>;
+      create: AugmentedSubmittable<(admin: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, minBalance: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, u128]>;
       /**
        * Destroy a class of fungible assets.
        * 
@@ -2574,7 +2400,7 @@ declare module '@polkadot/api/types/submittable' {
        * - `s = witness.sufficients`
        * - `a = witness.approvals`
        **/
-      destroy: AugmentedSubmittable<(id: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, witness: BholdusTokensDestroyWitness | { accounts?: any; sufficients?: any; approvals?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusPrimitivesCurrencyCurrencyId, BholdusTokensDestroyWitness]>;
+      destroy: AugmentedSubmittable<(id: u64 | AnyNumber | Uint8Array, witness: BholdusTokensDestroyWitness | { accounts?: any; sufficients?: any; approvals?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [u64, BholdusTokensDestroyWitness]>;
       /**
        * Issue a new class of fungible assets from a privileged origin.
        * 
@@ -2599,7 +2425,7 @@ declare module '@polkadot/api/types/submittable' {
        * Weight: `O(1)`
        * 
        **/
-      forceCreate: AugmentedSubmittable<(id: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, owner: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, isSufficient: bool | boolean | Uint8Array, minBalance: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusPrimitivesCurrencyCurrencyId, MultiAddress, bool, Compact<u128>]>;
+      forceCreate: AugmentedSubmittable<(id: u64 | AnyNumber | Uint8Array, owner: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, isSufficient: bool | boolean | Uint8Array, minBalance: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u64, MultiAddress, bool, Compact<u128>]>;
       /**
        * Disallow further ungrivileged transfers from an account
        * 
@@ -2612,7 +2438,7 @@ declare module '@polkadot/api/types/submittable' {
        * 
        * Weight: `O(1)`
        **/
-      freeze: AugmentedSubmittable<(id: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, who: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusPrimitivesCurrencyCurrencyId, MultiAddress]>;
+      freeze: AugmentedSubmittable<(id: u64 | AnyNumber | Uint8Array, who: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [u64, MultiAddress]>;
       /**
        * Disallow further ungrivileged transfers for the asset class.
        * 
@@ -2624,7 +2450,7 @@ declare module '@polkadot/api/types/submittable' {
        * 
        * Weight: `O(1)`
        **/
-      freezeAsset: AugmentedSubmittable<(id: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusPrimitivesCurrencyCurrencyId]>;
+      freezeAsset: AugmentedSubmittable<(id: u64 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u64]>;
       /**
        * Mint assets of a particular class.
        * 
@@ -2639,7 +2465,7 @@ declare module '@polkadot/api/types/submittable' {
        * Weight: `O(1)`
        * Modes: Pre-existing balance of `beneficiary`; Account pre-existence of `beneficiary`.
        **/
-      mint: AugmentedSubmittable<(id: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, beneficiary: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, amount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusPrimitivesCurrencyCurrencyId, MultiAddress, Compact<u128>]>;
+      mint: AugmentedSubmittable<(id: u64 | AnyNumber | Uint8Array, beneficiary: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, amount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u64, MultiAddress, Compact<u128>]>;
       /**
        * Set an account's identity information and reserve the appropriate deposit.
        * 
@@ -2660,7 +2486,7 @@ declare module '@polkadot/api/types/submittable' {
        * - One event.
        * #</weight>
        **/
-      setIdentity: AugmentedSubmittable<(id: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, info: BholdusTokensAssetIdentity | { additional?: any; basicInformation?: any; socialProfiles?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusPrimitivesCurrencyCurrencyId, BholdusTokensAssetIdentity]>;
+      setIdentity: AugmentedSubmittable<(id: u64 | AnyNumber | Uint8Array, info: BholdusTokensAssetIdentity | { additional?: any; basicInformation?: any; socialProfiles?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [u64, BholdusTokensAssetIdentity]>;
       /**
        * Set the metadata for an asset.
        * 
@@ -2679,7 +2505,7 @@ declare module '@polkadot/api/types/submittable' {
        * 
        * Weight: `O(1)`
        **/
-      setMetadata: AugmentedSubmittable<(id: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, name: Bytes | string | Uint8Array, symbol: Bytes | string | Uint8Array, decimals: u8 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusPrimitivesCurrencyCurrencyId, Bytes, Bytes, u8]>;
+      setMetadata: AugmentedSubmittable<(id: u64 | AnyNumber | Uint8Array, name: Bytes | string | Uint8Array, symbol: Bytes | string | Uint8Array, decimals: u8 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u64, Bytes, Bytes, u8]>;
       /**
        * Allow unprivileged transfers from an account again.
        * 
@@ -2693,7 +2519,7 @@ declare module '@polkadot/api/types/submittable' {
        * Weight: `O(1)`
        * 
        **/
-      thaw: AugmentedSubmittable<(id: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, who: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusPrimitivesCurrencyCurrencyId, MultiAddress]>;
+      thaw: AugmentedSubmittable<(id: u64 | AnyNumber | Uint8Array, who: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [u64, MultiAddress]>;
       /**
        * Allow unprivileged transfers for the asset again.
        * 
@@ -2705,7 +2531,7 @@ declare module '@polkadot/api/types/submittable' {
        * 
        * Weight: `O(1)`
        **/
-      thawAsset: AugmentedSubmittable<(id: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusPrimitivesCurrencyCurrencyId]>;
+      thawAsset: AugmentedSubmittable<(id: u64 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u64]>;
       /**
        * Move some assets from the sender account to another.
        * 
@@ -2726,7 +2552,7 @@ declare module '@polkadot/api/types/submittable' {
        * Modes: Pre-existence of `target`; Post-existence of sender; Prior & post zombie-status
        * of sender; Account pre-existence of `target`.
        **/
-      transfer: AugmentedSubmittable<(id: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array, target: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, amount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusPrimitivesCurrencyCurrencyId, MultiAddress, Compact<u128>]>;
+      transfer: AugmentedSubmittable<(id: u64 | AnyNumber | Uint8Array, target: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, amount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u64, MultiAddress, Compact<u128>]>;
       /**
        * Verify asset from a privileged origin.
        * 
@@ -2738,7 +2564,7 @@ declare module '@polkadot/api/types/submittable' {
        * 
        * Weight: `O(1)`
        **/
-      verifyAsset: AugmentedSubmittable<(id: BholdusPrimitivesCurrencyCurrencyId | { Token: any } | { DexShare: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [BholdusPrimitivesCurrencyCurrencyId]>;
+      verifyAsset: AugmentedSubmittable<(id: u64 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u64]>;
       /**
        * Generic tx
        **/

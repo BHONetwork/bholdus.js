@@ -3,11 +3,15 @@
 
 import { OverrideVersionedType } from '@polkadot/types/types';
 
-import bholdusSpec from './bholdus';
+import phoenixSpec from './phoenix';
+import cygnusSpec from './cygnus';
+import ulasSpec from './ulas';
 
 // Type overrides for specific spec types & versions as given in runtimeVersion
 const typesSpec: Record<string, OverrideVersionedType[]> = {
-  bholdus: bholdusSpec
+  phoenix: phoenixSpec,
+  cygnus: cygnusSpec,
+  ulas: ulasSpec,
 };
 
 export default typesSpec;

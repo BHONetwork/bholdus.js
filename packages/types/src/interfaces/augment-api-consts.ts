@@ -1,12 +1,11 @@
 // Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable */
 
-import type { BholdusPrimitivesCurrencyCurrencyId } from '@bholdus/types/interfaces/bholdusPrimitives';
 import type { ApiTypes } from '@polkadot/api/types';
 import type { Vec, u128, u16, u32, u64, u8 } from '@polkadot/types';
 import type { AccountId32, Perbill, Permill } from '@polkadot/types/interfaces/runtime';
 import type { FrameSupportPalletId, FrameSupportWeightsRuntimeDbWeight, FrameSupportWeightsWeightToFeeCoefficient, FrameSystemLimitsBlockLength, FrameSystemLimitsBlockWeights, PalletContractsSchedule, SpVersionRuntimeVersion } from '@polkadot/types/lookup';
-import type { Codec, ITuple } from '@polkadot/types/types';
+import type { Codec } from '@polkadot/types/types';
 
 declare module '@polkadot/api/types/consts' {
   export interface AugmentedConsts<ApiType> {
@@ -128,16 +127,9 @@ declare module '@polkadot/api/types/consts' {
        **/
       [key: string]: Codec;
     };
-    chainBridge: {
-      /**
-       * The identifier for this chain.
-       * This must be unique and must not collide with existing IDs within a set of bridged chains.
-       **/
-      chainIdentity: u8 & AugmentedConst<ApiType>;
-      /**
-       * ChainBridge Pallet Account Id
-       **/
+    bridgeNativeTransfer: {
       palletAccountId: AccountId32 & AugmentedConst<ApiType>;
+      palletId: FrameSupportPalletId & AugmentedConst<ApiType>;
       /**
        * Generic const
        **/
@@ -163,31 +155,6 @@ declare module '@polkadot/api/types/consts' {
        * Cost schedule and limits.
        **/
       schedule: PalletContractsSchedule & AugmentedConst<ApiType>;
-      /**
-       * Generic const
-       **/
-      [key: string]: Codec;
-    };
-    currencies: {
-      getNativeCurrencyId: BholdusPrimitivesCurrencyCurrencyId & AugmentedConst<ApiType>;
-      /**
-       * Generic const
-       **/
-      [key: string]: Codec;
-    };
-    dex: {
-      /**
-       * Exchange fee. Use seperate numerator, denominator to achieve result more accurate
-       **/
-      exchangeFee: ITuple<[u32, u32]> & AugmentedConst<ApiType>;
-      /**
-       * Pallet Id turned into Account Id to hold tokens
-       **/
-      palletId: FrameSupportPalletId & AugmentedConst<ApiType>;
-      /**
-       * Trading path limit
-       **/
-      tradingPathLimit: u32 & AugmentedConst<ApiType>;
       /**
        * Generic const
        **/
