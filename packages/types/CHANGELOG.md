@@ -1,5 +1,11 @@
 # @bholdus/types
 
+## 0.3.0
+
+### Minor Changes
+
+- ef06096: add some types
+
 ## 0.2.0
 
 ### Minor Changes
