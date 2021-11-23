@@ -525,6 +525,19 @@ declare module '@polkadot/api/types/submittable' {
        **/
       [key: string]: SubmittableExtrinsicFunction<ApiType>;
     };
+    currencies: {
+      /**
+       * Transfer some balance to another account under `currency_id`.
+       * 
+       * The dispatch origin for this call must be `Signed` by the
+       * transactor.
+       **/
+      transfer: AugmentedSubmittable<(dest: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, currencyId: u64 | AnyNumber | Uint8Array, amount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, u64, Compact<u128>]>;
+      /**
+       * Generic tx
+       **/
+      [key: string]: SubmittableExtrinsicFunction<ApiType>;
+    };
     electionProviderMultiPhase: {
       /**
        * Set a solution in the queue, to be handed out to the client of this pallet in the next
@@ -2466,6 +2479,7 @@ declare module '@polkadot/api/types/submittable' {
        * Modes: Pre-existing balance of `beneficiary`; Account pre-existence of `beneficiary`.
        **/
       mint: AugmentedSubmittable<(id: u64 | AnyNumber | Uint8Array, beneficiary: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, amount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u64, MultiAddress, Compact<u128>]>;
+      setBlacklist: AugmentedSubmittable<(name: Bytes | string | Uint8Array, symbol: Bytes | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [Bytes, Bytes]>;
       /**
        * Set an account's identity information and reserve the appropriate deposit.
        * 

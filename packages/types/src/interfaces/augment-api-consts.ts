@@ -128,6 +128,10 @@ declare module '@polkadot/api/types/consts' {
       [key: string]: Codec;
     };
     bridgeNativeTransfer: {
+      /**
+       * Minimum amount to transfer. This should match `ExistentialDeposit` of `pallet_balance`
+       **/
+      minimumDeposit: u128 & AugmentedConst<ApiType>;
       palletAccountId: AccountId32 & AugmentedConst<ApiType>;
       palletId: FrameSupportPalletId & AugmentedConst<ApiType>;
       /**

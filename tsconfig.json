@@ -1,23 +1,17 @@
 {
-    "extends": "./node_modules/@polkadot/dev/config/tsconfig",
-    "exclude": [
-      "build/**/*",
-      "**/build/**/*",
-    ],
-    "compilerOptions": {
-      "module": "commonjs",
-      "baseUrl": ".",
-      "paths":
-      {
-        "@bholdus/types": ["packages/types/src"],
-        "@bholdus/types/*": ["packages/types/src/*"],
-        "@polkadot/api/augment": ["packages/types/src/interfaces/augment-api.ts"],
-        "@polkadot/types/augment": ["packages/types/src/interfaces/augment-types.ts"],
-      },
-      "skipLibCheck": true,
-      "typeRoots": [
-        "./node_modules/@polkadot/ts",
-        "./node_modules/@types"
-      ]
-    }
+  "extends": "./node_modules/@polkadot/dev/config/tsconfig",
+  "exclude": ["build/**/*", "**/build/**/*"],
+  "compilerOptions": {
+    "module": "commonjs",
+    "baseUrl": ".",
+    "paths": {
+      "@bholdus/types": ["packages/types/src"],
+      "@bholdus/types/*": ["packages/types/src/*"],
+      "@polkadot/api/augment": ["packages/types/src/interfaces/augment-api.ts"],
+      "@polkadot/types/augment": ["packages/types/src/interfaces/augment-types.ts"]
+    },
+    "skipLibCheck": true,
+    "typeRoots": ["./node_modules/@polkadot/ts", "./node_modules/@types"],
+    "noUnusedLocals": false
   }
+}

@@ -169,6 +169,10 @@ declare module '@polkadot/api/types/errors' {
        **/
       InvalidServiceFeeRate: AugmentedError<ApiType>;
       /**
+       * Minimum deposit required
+       **/
+      MinimumDepositRequired: AugmentedError<ApiType>;
+      /**
        * Only registered chains are supported
        **/
       MustBeRegisteredChain: AugmentedError<ApiType>;
@@ -363,6 +367,20 @@ declare module '@polkadot/api/types/errors' {
        * The given weight bound for the proposal was too low.
        **/
       WrongProposalWeight: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
+    currencies: {
+      /**
+       * Unable to convert the Amount type into Balance.
+       **/
+      AmountIntoBalanceFailed: AugmentedError<ApiType>;
+      /**
+       * Balance is too low.
+       **/
+      BalanceTooLow: AugmentedError<ApiType>;
       /**
        * Generic error
        **/
@@ -971,6 +989,10 @@ declare module '@polkadot/api/types/errors' {
        * Cannot convert Amount into Balance type
        **/
       AmountIntoBalanceFailed: AugmentedError<ApiType>;
+      /**
+       * Asset belong blacklist
+       **/
+      AssetBlacklist: AugmentedError<ApiType>;
       /**
        * Invalid metadata given.
        **/
