@@ -1,5 +1,11 @@
 # @bholdus/types
 
+## 0.4.0
+
+### Minor Changes
+
+- e65948e: update types
+
 ## 0.3.0
 
 ### Minor Changes

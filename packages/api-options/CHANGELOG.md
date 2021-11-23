@@ -1,5 +1,16 @@
 # @bholdus/api-options
 
+## 0.4.0
+
+### Minor Changes
+
+- e65948e: update types
+
+### Patch Changes
+
+- Updated dependencies [e65948e]
+  - @bholdus/types@0.4.0
+
 ## 0.3.0
 
 ### Minor Changes
