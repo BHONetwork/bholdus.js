@@ -1,5 +1,13 @@
 # @bholdus/api-options
 
+## 0.4.1
+
+### Patch Changes
+
+- update types
+- Updated dependencies [undefined]
+  - @bholdus/types@0.4.1
+
 ## 0.4.0
 
 ### Minor Changes

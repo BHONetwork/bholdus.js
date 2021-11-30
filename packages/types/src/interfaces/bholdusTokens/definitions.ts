@@ -51,6 +51,7 @@ export default {
       minBalance: 'BalanceOf',
       isSufficient: 'bool',
       accounts: 'u32',
+      sufficients: 'u32',
       approvals: 'u32',
       isFrozen: 'bool',
     },

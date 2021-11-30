@@ -44,6 +44,7 @@ export interface BholdusTokensAssetDetails extends Struct {
   readonly minBalance: BalanceOf;
   readonly isSufficient: bool;
   readonly accounts: u32;
+  readonly sufficients: u32;
   readonly approvals: u32;
   readonly isFrozen: bool;
 }
