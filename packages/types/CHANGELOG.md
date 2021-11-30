@@ -1,5 +1,11 @@
 # @bholdus/types
 
+## 0.5.0
+
+### Minor Changes
+
+- c1ca8f2: update for phoenix-1.0.7
+
 ## 0.4.2
 
 ### Patch Changes

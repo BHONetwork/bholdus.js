@@ -1,5 +1,16 @@
 # @bholdus/api-options
 
+## 0.5.0
+
+### Minor Changes
+
+- c1ca8f2: update for phoenix-1.0.7
+
+### Patch Changes
+
+- Updated dependencies [c1ca8f2]
+  - @bholdus/types@0.5.0
+
 ## 0.4.2
 
 ### Patch Changes

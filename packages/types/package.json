@@ -1,6 +1,6 @@
 {
   "name": "@bholdus/types",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "Implementation of the Parity codec",
   "main": "index.js",
   "keywords": [
