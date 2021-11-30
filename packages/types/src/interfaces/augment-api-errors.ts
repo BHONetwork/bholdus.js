@@ -372,20 +372,6 @@ declare module '@polkadot/api/types/errors' {
        **/
       [key: string]: AugmentedError<ApiType>;
     };
-    currencies: {
-      /**
-       * Unable to convert the Amount type into Balance.
-       **/
-      AmountIntoBalanceFailed: AugmentedError<ApiType>;
-      /**
-       * Balance is too low.
-       **/
-      BalanceTooLow: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
     electionProviderMultiPhase: {
       /**
        * The call is not allowed at this point.

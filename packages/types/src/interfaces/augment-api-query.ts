@@ -121,7 +121,11 @@ declare module '@polkadot/api/types/storage' {
       /**
        * Next available token ID.
        **/
-      nextTokenId: AugmentedQuery<ApiType, (arg: u32 | AnyNumber | Uint8Array) => Observable<u64>, [u32]> & QueryableStorageEntry<ApiType, [u32]>;
+      nextTokenId: AugmentedQuery<ApiType, () => Observable<u64>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * Next available token ID.
+       **/
+      nextTokenIdByClass: AugmentedQuery<ApiType, (arg: u32 | AnyNumber | Uint8Array) => Observable<u64>, [u32]> & QueryableStorageEntry<ApiType, [u32]>;
       /**
        * Store token info.
        * 

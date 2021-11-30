@@ -1,9 +1,10 @@
 // Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable */
 
+import type { BholdusTokensAssetMetadata } from '@bholdus/types/interfaces/bholdusTokens';
 import type { PhoenixRuntimeProxyType } from '@bholdus/types/interfaces/phoenixRuntime';
 import type { ApiTypes } from '@polkadot/api/types';
-import type { Bytes, Null, Option, Result, U8aFixed, Vec, bool, i128, u128, u16, u32, u64, u8 } from '@polkadot/types';
+import type { Bytes, Null, Option, Result, U8aFixed, Vec, bool, u128, u16, u32, u64, u8 } from '@polkadot/types';
 import type { AccountId32, H256 } from '@polkadot/types/interfaces/runtime';
 import type { FrameSupportTokensMiscBalanceStatus, FrameSupportWeightsDispatchInfo, PalletElectionProviderMultiPhaseElectionCompute, PalletImOnlineSr25519AppSr25519Public, PalletMultisigTimepoint, PalletStakingExposure, SpFinalityGrandpaAppPublic, SpRuntimeDispatchError } from '@polkadot/types/lookup';
 import type { ITuple } from '@polkadot/types/types';
@@ -194,28 +195,6 @@ declare module '@polkadot/api/types/events' {
        * \[account, proposal_hash, voted, yes, no\]
        **/
       Voted: AugmentedEvent<ApiType, [AccountId32, H256, bool, u32, u32]>;
-      /**
-       * Generic event
-       **/
-      [key: string]: AugmentedEvent<ApiType>;
-    };
-    currencies: {
-      /**
-       * Update balance success. \[currency_id, who, amount\]
-       **/
-      BalanceUpdated: AugmentedEvent<ApiType, [u64, AccountId32, i128]>;
-      /**
-       * Deposit success. \[currency_id, who, amount\]
-       **/
-      Deposited: AugmentedEvent<ApiType, [u64, AccountId32, u128]>;
-      /**
-       * Currency transfer success. \[currency_id, from, to, amount\]
-       **/
-      Transferred: AugmentedEvent<ApiType, [u64, AccountId32, AccountId32, u128]>;
-      /**
-       * Withdraw success. \[currency_id, who, amount\]
-       **/
-      Withdrawn: AugmentedEvent<ApiType, [u64, AccountId32, u128]>;
       /**
        * Generic event
        **/
@@ -654,6 +633,11 @@ declare module '@polkadot/api/types/events' {
        * Some asset class was created. \[asset_id, creator, owner\]
        **/
       Created: AugmentedEvent<ApiType, [u64, AccountId32, AccountId32]>;
+      /**
+       * Some asset class was created and minted. \[asset_id, creator, owner, beneficiary,
+       * metadata\]
+       **/
+      CreateMinted: AugmentedEvent<ApiType, [u64, AccountId32, AccountId32, AccountId32, BholdusTokensAssetMetadata]>;
       /**
        * An asset class was destroyed.
        **/
