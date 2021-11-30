@@ -1,5 +1,13 @@
 # @bholdus/api-options
 
+## 0.4.2
+
+### Patch Changes
+
+- e617f68: fix
+- Updated dependencies [e617f68]
+  - @bholdus/types@0.4.2
+
 ## 0.4.1
 
 ### Patch Changes
