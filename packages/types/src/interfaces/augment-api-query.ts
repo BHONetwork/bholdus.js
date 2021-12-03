@@ -169,6 +169,10 @@ declare module '@polkadot/api/types/storage' {
     };
     bridgeNativeTransfer: {
       /**
+       * Indicating the bridge is frozen by admin
+       **/
+      frozen: AugmentedQuery<ApiType, () => Observable<bool>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
        * The outbound transfer id waiting to be confirmed
        **/
       nextConfirmOutboundTransferId: AugmentedQuery<ApiType, () => Observable<u128>, []> & QueryableStorageEntry<ApiType, []>;

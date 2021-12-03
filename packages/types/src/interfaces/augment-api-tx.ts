@@ -279,6 +279,10 @@ declare module '@polkadot/api/types/submittable' {
        **/
       confirmTransfer: AugmentedSubmittable<(transferId: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u128]>;
       /**
+       * Freeze the bridge
+       **/
+      forceFreeze: AugmentedSubmittable<() => SubmittableExtrinsic<ApiType>, []>;
+      /**
        * Register chain id that crosschain transfer supports
        * Chain id will be pre-defined by Bholdus team
        * Only `AdminOrigin` can access this operation
@@ -294,6 +298,7 @@ declare module '@polkadot/api/types/submittable' {
        * Only `AdminOrigin` can access this operation
        **/
       forceSetServiceFee: AugmentedSubmittable<(serviceFeeRate: ITuple<[u32, u32]> | [u32 | AnyNumber | Uint8Array, u32 | AnyNumber | Uint8Array]) => SubmittableExtrinsic<ApiType>, [ITuple<[u32, u32]>]>;
+      forceUnfreeze: AugmentedSubmittable<() => SubmittableExtrinsic<ApiType>, []>;
       /**
        * Unregister chain id
        * Chain id will be pre-defined by Bholdus team

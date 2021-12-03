@@ -165,6 +165,10 @@ declare module '@polkadot/api/types/errors' {
        **/
       AllOutboundTransfersConfirmed: AugmentedError<ApiType>;
       /**
+       * Bridge is freezed
+       **/
+      Frozen: AugmentedError<ApiType>;
+      /**
        * Invalid Service Fee Rate
        **/
       InvalidServiceFeeRate: AugmentedError<ApiType>;
