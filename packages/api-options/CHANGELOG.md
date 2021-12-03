@@ -1,5 +1,16 @@
 # @bholdus/api-options
 
+## 0.6.0
+
+### Minor Changes
+
+- c079a26: match with runtime 1.0.8
+
+### Patch Changes
+
+- Updated dependencies [c079a26]
+  - @bholdus/types@0.6.0
+
 ## 0.5.0
 
 ### Minor Changes
