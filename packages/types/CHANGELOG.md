@@ -1,5 +1,11 @@
 # @bholdus/types
 
+## 0.7.0
+
+### Minor Changes
+
+- 7d99453: match runtime v1.0.9
+
 ## 0.6.0
 
 ### Minor Changes

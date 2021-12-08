@@ -1,5 +1,16 @@
 # @bholdus/api-options
 
+## 0.7.0
+
+### Minor Changes
+
+- 7d99453: match runtime v1.0.9
+
+### Patch Changes
+
+- Updated dependencies [7d99453]
+  - @bholdus/types@0.7.0
+
 ## 0.6.0
 
 ### Minor Changes
