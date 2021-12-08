@@ -294,10 +294,15 @@ declare module '@polkadot/api/types/submittable' {
        **/
       forceRegisterRelayer: AugmentedSubmittable<(relayer: AccountId32 | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32]>;
       /**
+       * Set platform fee
+       * Only `AdminOrigin` can access this operation
+       **/
+      forceSetPlatformFee: AugmentedSubmittable<(platformFee: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u128]>;
+      /**
        * Set service fee that user will be charged when initiates a transfer
        * Only `AdminOrigin` can access this operation
        **/
-      forceSetServiceFee: AugmentedSubmittable<(serviceFeeRate: ITuple<[u32, u32]> | [u32 | AnyNumber | Uint8Array, u32 | AnyNumber | Uint8Array]) => SubmittableExtrinsic<ApiType>, [ITuple<[u32, u32]>]>;
+      forceSetServiceFee: AugmentedSubmittable<(serviceFee: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u128]>;
       forceUnfreeze: AugmentedSubmittable<() => SubmittableExtrinsic<ApiType>, []>;
       /**
        * Unregister chain id

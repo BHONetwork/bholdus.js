@@ -189,6 +189,10 @@ declare module '@polkadot/api/types/storage' {
        **/
       outboundTransfers: AugmentedQuery<ApiType, (arg: u128 | AnyNumber | Uint8Array) => Observable<Option<BholdusBridgeNativeTransferOutboundTransferInfo>>, [u128]> & QueryableStorageEntry<ApiType, [u128]>;
       /**
+       * The platform fee to charge users
+       **/
+      platformFee: AugmentedQuery<ApiType, () => Observable<u128>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
        * Registered Chains
        * Only registered chains is supported for crosschain transfer
        **/
@@ -199,9 +203,9 @@ declare module '@polkadot/api/types/storage' {
        **/
       registeredRelayers: AugmentedQuery<ApiType, (arg: AccountId32 | string | Uint8Array) => Observable<bool>, [AccountId32]> & QueryableStorageEntry<ApiType, [AccountId32]>;
       /**
-       * The service fee rate to charge users
+       * The service fee to charge users
        **/
-      serviceFeeRate: AugmentedQuery<ApiType, () => Observable<ITuple<[u32, u32]>>, []> & QueryableStorageEntry<ApiType, []>;
+      serviceFee: AugmentedQuery<ApiType, () => Observable<u128>, []> & QueryableStorageEntry<ApiType, []>;
       /**
        * Generic query
        **/
