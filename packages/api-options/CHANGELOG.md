@@ -1,5 +1,16 @@
 # @bholdus/api-options
 
+## 0.8.0
+
+### Minor Changes
+
+- b0ea9ff: update types for runtime v1.0.10
+
+### Patch Changes
+
+- Updated dependencies [b0ea9ff]
+  - @bholdus/types@0.8.0
+
 ## 0.7.0
 
 ### Minor Changes

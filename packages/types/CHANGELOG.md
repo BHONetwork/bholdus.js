@@ -1,5 +1,11 @@
 # @bholdus/types
 
+## 0.8.0
+
+### Minor Changes
+
+- b0ea9ff: update types for runtime v1.0.10
+
 ## 0.7.0
 
 ### Minor Changes
