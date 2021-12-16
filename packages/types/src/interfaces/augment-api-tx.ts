@@ -2359,6 +2359,19 @@ declare module '@polkadot/api/types/submittable' {
     };
     tokens: {
       /**
+       * Reduce the balance of `who` by as much as possible up to `amount` assets of `id`.
+       * 
+       * - `id`: The identifier of the asset to have some amount burned.
+       * - `who`: The account to be debited from.
+       * - `amount`: The maximum amount by which `who`'s balance should be reduced.
+       * 
+       * Emits `Burned` with the actual amount burned. If this takes the balance to below the
+       * minimum for the asset, then the amount burned is increased to take it to zero.
+       * 
+       * Weight: `O(1)`
+       **/
+      burn: AugmentedSubmittable<(id: Compact<u64> | AnyNumber | Uint8Array, who: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, amount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [Compact<u64>, MultiAddress, Compact<u128>]>;
+      /**
        * Clear the metadata for an asset.
        * 
        * Origin must be Signed and the sender should be the Owner of the asset `id`.

@@ -1000,6 +1000,10 @@ declare module '@polkadot/api/types/errors' {
        **/
       BalanceZero: AugmentedError<ApiType>;
       /**
+       * Invalid amount
+       **/
+      ExceedTotalSupply: AugmentedError<ApiType>;
+      /**
        * Value too low to create account due to existential deposit
        **/
       ExistentialDeposit: AugmentedError<ApiType>;
@@ -1011,6 +1015,14 @@ declare module '@polkadot/api/types/errors' {
        * The asset ID is already taken.
        **/
       InUse: AugmentedError<ApiType>;
+      /**
+       * Invalid Decimals
+       **/
+      InvalidDecimals: AugmentedError<ApiType>;
+      /**
+       * Invalid Symbol
+       **/
+      InvalidSymbol: AugmentedError<ApiType>;
       /**
        * Transfer/payment would kill account
        **/
